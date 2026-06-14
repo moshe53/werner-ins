@@ -11,12 +11,12 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
 --teal:#014C46;--teal-d:#023832;--teal-dd:#012420;--gold:#B5A28C;--gold-d:#937c5c;
 --cream:#F7F3EC;--cream2:#FBF8F2;--ink:#2A2A26;--muted:#6B6760;--line:rgba(0,0,0,.08);
---serif:'Frank Ruhl Libre',Georgia,serif;--sans:'Assistant','Segoe UI',sans-serif;
+--serif:Arial,'Arimo','Helvetica Neue',Helvetica,sans-serif;--sans:Arial,'Arimo','Helvetica Neue',Helvetica,sans-serif;
 --wrap:1080px;}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -95,8 +95,12 @@ img{max-width:100%;display:block}
 .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .acard{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
 .acard:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.07)}
-.acard .thumb{height:140px;background:#e7ddcd;display:flex;align-items:center;justify-content:center;color:#bfb19a}
-.acard .thumb svg{width:34px;height:34px}
+.acard .thumb{position:relative;height:150px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.thumb-ic{position:absolute;opacity:.16;color:#fff;line-height:0;transform:rotate(-8deg)}
+.thumb-ic svg{width:130px;height:130px}
+.thumb-cat{position:relative;color:#fff;font-family:var(--serif);font-weight:700;font-size:23px;text-shadow:0 1px 10px rgba(0,0,0,.18)}
+.acard .thumb img{width:100%;height:100%;object-fit:cover}
+.art-banner{width:100%;border-radius:16px;margin-bottom:30px;display:block;box-shadow:0 10px 30px rgba(0,0,0,.08)}
 .acard .body{padding:20px}
 .acard .cat{font-size:12px;color:var(--gold-d);font-weight:700}
 .acard h3{font-size:18px;margin:8px 0 10px;line-height:1.35}
@@ -221,6 +225,7 @@ body{font-size:16px}
  <div class="meta">משה ורנר · כ-6 דקות קריאה</div>
 </div></section>
 <article class="art-body">
+ <img class="art-banner" src="assets/article-retirement.jpg" alt="פיננסים ופרישה">
  <p>חסכתם במשך עשרות שנים. עכשיו מגיע החלק שמעטים מתכוננים אליו באמת: <strong>איך הופכים את כל החיסכון הזה להכנסה חודשית שתלווה אתכם בכבוד</strong>. תכנון פרישה טוב לא מתחיל בגיל הפרישה — הוא מתחיל שנים קודם. וההחלטות שמתקבלות בו משפיעות על כל יתר חייכם.</p>
 <h2>הפרישה היא לא אירוע — היא תהליך</h2>
 <p>רוב האנשים מגיעים לפרישה עם כספים מפוזרים: קרן פנסיה, קרן השתלמות, קופות גמל, ביטוחי מנהלים. כל אחד עם כללים, מועדים ומשמעויות מס שונות. הצעד הראשון הוא פשוט <strong>לרכז את כל התמונה במקום אחד</strong> ולהבין מה יש לכם באמת.</p>
