@@ -296,7 +296,12 @@ body.a11y-links a{text-decoration:underline !important;font-weight:700 !importan
  if(t)t.addEventListener('click',function(){n.classList.contains('open')?closeNav():openNav();});
  if(cl)cl.addEventListener('click',closeNav);
  if(ov)ov.addEventListener('click',closeNav);
- if(n)n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeNav)});
+ if(n)n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(ev){
+   var href=a.getAttribute('href')||'';
+   var hashOnly=href.indexOf('index.html#')===0 && (location.pathname==='/'||/index\.html$/.test(location.pathname)||location.pathname==='');
+   if(hashOnly){var id=href.split('#')[1];var el=document.getElementById(id);if(el){ev.preventDefault();closeNav();setTimeout(function(){el.scrollIntoView({behavior:'smooth'});history.replaceState(null,'','#'+id);},60);return;}}
+   closeNav();
+ })});
  (function(){var root=document.documentElement,bd=document.body;
   function L(k,d){try{return localStorage.getItem(k)||d}catch(e){return d}}
   function S(k,v){try{localStorage.setItem(k,v)}catch(e){}}
