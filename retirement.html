@@ -312,7 +312,15 @@ body.a11y-links a{text-decoration:underline !important;font-weight:700 !importan
  if(t)t.addEventListener('click',function(){n.classList.contains('open')?closeNav():openNav();});
  if(cl)cl.addEventListener('click',closeNav);
  if(ov)ov.addEventListener('click',closeNav);
- if(n)n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeNav)});
+ document.querySelectorAll('a[href*="#"]').forEach(function(a){a.addEventListener('click',function(ev){
+   var href=a.getAttribute('href')||'';var i=href.indexOf('#');if(i<0)return;
+   var hash=href.substring(i+1);if(!hash)return;
+   var el=document.getElementById(hash);if(!el){closeNav();return;}
+   ev.preventDefault();closeNav();
+   var y=el.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop)-70;
+   try{window.scrollTo({top:y,behavior:'smooth'});}catch(e){window.scrollTo(0,y);}
+   if(history.replaceState)history.replaceState(null,'','#'+hash);
+ })});
  (function(){var root=document.documentElement,bd=document.body;
   function L(k,d){try{return localStorage.getItem(k)||d}catch(e){return d}}
   function S(k,v){try{localStorage.setItem(k,v)}catch(e){}}
