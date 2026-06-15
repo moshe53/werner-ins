@@ -19,7 +19,7 @@
 --serif:Arial,'Arimo','Helvetica Neue',Helvetica,sans-serif;--sans:Arial,'Arimo','Helvetica Neue',Helvetica,sans-serif;
 --wrap:1080px;}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:var(--serif);color:var(--teal-d);font-weight:700;line-height:1.25}
 a{color:inherit;text-decoration:none}
@@ -320,7 +320,7 @@ body.a11y-links a{text-decoration:underline !important;font-weight:700 !importan
    var el=document.getElementById(hash);if(!el){closeNav();return;}
    ev.preventDefault();closeNav();
    var y=el.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop)-70;
-   try{window.scrollTo({top:y,behavior:'smooth'});}catch(e){window.scrollTo(0,y);}
+   window.scrollTo(0,y);
    if(history.replaceState)history.replaceState(null,'','#'+hash);
  })});
  (function(){var root=document.documentElement,bd=document.body;
