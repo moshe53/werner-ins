@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06211C">
+<title>מחשבון ביטוח נסיעות לחו"ל | משה ורנר</title>
+<meta name="description" content="מחשבון מחיר לביטוח נסיעות לחו&quot;ל של פספורטכארד — לפי גיל, יעד, משך הנסיעה והרחבות. קבלו הערכת מחיר מיידית.">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Frank+Ruhl+Libre:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#06211C;
+  --surface:#0B2B25;
+  --surface2:#10332C;
+  --line:rgba(201,168,106,.22);
+  --gold:#C9A86A;
+  --gold-b:#D4B57A;
+  --cream:#F2ECE0;
+  --muted:#8FA69F;
+  --pc-red:#E4002B;
+  --green:#7FC8A9;
+  --warn:#E8C077;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto}
+body{
+  font-family:'Heebo',-apple-system,'Segoe UI',Arial,sans-serif;
+  background:var(--bg);color:var(--cream);line-height:1.6;
+}
+a{color:var(--gold-b)}
+.skip{position:absolute;right:-9999px;background:var(--gold);color:var(--bg);padding:8px 14px;z-index:99;border-radius:0 0 6px 6px}
+.skip:focus{right:0;top:0}
+
+/* ===== Header ===== */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(6,33,28,.94);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:none;
+}
+.hwrap{max-width:1120px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{display:flex;flex-direction:column;text-decoration:none;line-height:1.15}
+.brand .nm{color:var(--cream);font-weight:800;font-size:18px;letter-spacing:.02em}
+.brand .tg{color:var(--gold);font-size:10px;letter-spacing:.34em;font-weight:500}
+nav{display:flex;gap:4px 18px;flex-wrap:wrap;margin-inline-start:auto}
+nav a{color:var(--cream);text-decoration:none;font-size:14px;font-weight:500;padding:4px 2px;border-bottom:1px solid transparent}
+nav a:hover,nav a:focus-visible{color:var(--gold-b);border-bottom-color:var(--gold-b);outline:none}
+.wa-btn{
+  background:var(--gold);color:var(--bg);text-decoration:none;font-weight:700;font-size:14px;
+  padding:9px 20px;border-radius:2px;white-space:nowrap;
+}
+.wa-btn:hover{background:var(--gold-b)}
+@media(max-width:760px){
+  nav{display:none}
+  .hwrap{justify-content:space-between}
+}
+
+/* ===== Hero ===== */
+.hero{max-width:1120px;margin:0 auto;padding:56px 20px 34px;position:relative}
+.eyebrow{color:var(--gold);font-weight:700;font-size:12.5px;letter-spacing:.22em;margin-bottom:14px}
+.hero h1{
+  font-size:clamp(30px,5vw,52px);font-weight:900;letter-spacing:-.01em;line-height:1.15;max-width:760px;
+}
+.hero h1 em{font-style:normal;color:var(--gold-b)}
+.hero p.sub{color:var(--muted);max-width:640px;margin-top:16px;font-size:16.5px}
+.hero .pc-chip{
+  display:inline-flex;align-items:center;gap:8px;margin-top:18px;
+  border:1px solid var(--line);border-radius:2px;padding:7px 14px;font-size:13px;color:var(--muted);
+}
+.hero .pc-chip b{color:#fff;background:var(--pc-red);border-radius:3px;padding:2px 8px;font-size:12px;letter-spacing:.02em}
+
+/* ===== Layout ===== */
+main{max-width:1120px;margin:10px auto 0;padding:0 20px 90px;display:grid;grid-template-columns:1fr 400px;gap:24px;align-items:start}
+@media(max-width:940px){main{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:22px 22px 20px;margin-bottom:22px}
+.card h2{
+  font-size:15px;font-weight:700;color:var(--gold-b);letter-spacing:.06em;margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.card h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.field{display:flex;flex-direction:column;gap:6px;min-width:140px;flex:1}
+.field label{font-size:12.5px;font-weight:500;color:var(--muted);letter-spacing:.04em}
+input[type=number],select{
+  font-family:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);
+  border-radius:2px;background:var(--surface2);color:var(--cream);width:100%;
+}
+input[type=number]:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px}
+select option{background:var(--surface2);color:var(--cream)}
+.seg{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.seg button{
+  flex:1;font-family:inherit;font-size:14px;font-weight:500;padding:10px 6px;border:none;
+  background:var(--surface2);color:var(--muted);cursor:pointer;
+}
+.seg button.on{background:var(--gold);color:var(--bg);font-weight:800}
+.seg button:focus-visible{outline:2px solid var(--cream);outline-offset:-2px}
+
+/* ===== Travelers ===== */
+.travelers{display:flex;flex-direction:column;gap:16px}
+.traveler{border:1px solid var(--line);border-radius:4px;padding:16px;background:var(--surface2)}
+.traveler-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.traveler-head .num{
+  border:1px solid var(--gold);color:var(--gold-b);font-weight:800;font-size:13px;
+  width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.traveler-head input[type=number]{width:92px}
+.traveler-head .spacer{flex:1}
+.icon-btn{
+  font-family:inherit;font-size:13px;border:1px solid var(--line);background:transparent;color:var(--muted);
+  border-radius:2px;padding:7px 12px;cursor:pointer;
+}
+.icon-btn:hover,.icon-btn:focus-visible{border-color:var(--gold);color:var(--gold-b);outline:none}
+.exts{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+@media(max-width:600px){.exts{grid-template-columns:1fr}}
+.ext{display:flex;align-items:center;gap:9px;font-size:13.5px;padding:5px 2px}
+.ext input[type=checkbox]{width:16px;height:16px;accent-color:var(--gold);flex-shrink:0;cursor:pointer}
+.ext label{cursor:pointer;line-height:1.35;color:var(--cream)}
+.ext .price-hint{color:var(--muted);font-size:11.5px}
+.ext select{width:auto;font-size:13px;padding:6px 8px;margin-inline-start:4px}
+.ext.disabled{opacity:.38}
+.ext.disabled label,.ext.disabled input{cursor:not-allowed}
+.add-btn{
+  margin-top:16px;width:100%;font-family:inherit;font-size:14.5px;font-weight:700;
+  padding:12px;border:1px dashed var(--gold);color:var(--gold-b);background:transparent;
+  border-radius:2px;cursor:pointer;letter-spacing:.03em;
+}
+.add-btn:hover,.add-btn:focus-visible{background:rgba(201,168,106,.1);outline:none}
+
+/* ===== Summary ===== */
+.summary{position:sticky;top:86px}
+.summary .card{padding:0;overflow:hidden}
+.summary-head{background:linear-gradient(160deg,#0E332B,#0A241F);border-bottom:1px solid var(--line);padding:18px 22px}
+.summary-head .label{font-size:11.5px;letter-spacing:.24em;color:var(--gold);font-weight:700}
+.summary-head .total{
+  font-family:'Frank Ruhl Libre','Heebo',serif;
+  font-size:42px;font-weight:700;color:var(--cream);letter-spacing:-.5px;line-height:1.12;margin-top:2px;
+}
+.summary-head .per{font-size:12.5px;color:var(--muted)}
+.summary-body{padding:16px 22px 20px}
+.t-block{border-bottom:1px dashed var(--line);padding:11px 0}
+.t-block:last-of-type{border-bottom:none}
+.t-block .t-title{display:flex;justify-content:space-between;font-weight:700;font-size:14px}
+.t-block .t-title .amt{color:var(--gold-b);font-weight:800}
+.t-lines{margin-top:5px;font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+.t-lines .ln{display:flex;justify-content:space-between;gap:10px}
+.t-lines .ln .v{white-space:nowrap}
+.t-lines .free{color:var(--green);font-weight:500}
+.warn{
+  background:rgba(232,192,119,.09);color:var(--warn);border:1px solid rgba(232,192,119,.35);
+  border-radius:2px;padding:8px 12px;font-size:12.5px;line-height:1.5;margin-top:9px;
+}
+.err{color:#F0A2AE;border-color:rgba(228,0,43,.4);background:rgba(228,0,43,.08)}
+.buy-btn{
+  display:block;text-align:center;width:100%;margin-top:8px;font-family:inherit;font-size:15.5px;font-weight:800;
+  padding:14px;background:var(--gold);color:var(--bg);border:none;border-radius:2px;cursor:pointer;
+  text-decoration:none;letter-spacing:.02em;
+}
+.buy-btn:hover{background:var(--gold-b)}
+.copy-btn{
+  width:100%;margin-top:10px;font-family:inherit;font-size:14px;font-weight:600;
+  padding:11px;background:transparent;color:var(--gold-b);border:1px solid var(--gold);border-radius:2px;cursor:pointer;
+}
+.copy-btn:hover{background:rgba(201,168,106,.1)}
+.copy-btn.copied{color:var(--green);border-color:var(--green)}
+.buy-btn:focus-visible,.copy-btn:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
+.foot-note{font-size:11.5px;color:var(--muted);margin-top:14px;line-height:1.6}
+
+/* ===== Footer ===== */
+footer{border-top:1px solid var(--line);background:#041814;margin-top:20px}
+.fwrap{max-width:1120px;margin:0 auto;padding:44px 20px 30px}
+.fbrand .nm{font-weight:800;font-size:17px}
+.fbrand .tg{color:var(--gold);font-size:10px;letter-spacing:.34em}
+.fcols{display:flex;gap:40px;flex-wrap:wrap;margin-top:20px}
+.fcols .col h4{color:var(--gold-b);font-size:13px;letter-spacing:.1em;margin-bottom:8px}
+.fcols .col a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:2px 0}
+.fcols .col a:hover{color:var(--cream)}
+.legal{color:var(--muted);font-size:11.5px;line-height:1.7;margin-top:26px;border-top:1px solid var(--line);padding-top:18px}
+.copyr{color:var(--muted);font-size:12px;margin-top:14px}
+@media(prefers-reduced-motion:no-preference){
+  .t-block{animation:fadeIn .18s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#calc">דלג לתוכן</a>
+
+<header>
+  <div class="hwrap">
+    <a class="brand" href="index.html">
+      <span class="nm">משה ורנר</span>
+      <span class="tg">WEALTH · INSURANCE</span>
+    </a>
+    <nav aria-label="ניווט ראשי">
+      <a href="index.html">בית</a>
+      <a href="index.html#services">תחומים</a>
+      <a href="index.html#about">אודות</a>
+      <a href="articles.html">מאמרים</a>
+      <a href="travel.html">ביטוח נסיעות</a>
+      <a href="index.html#contact">צור קשר</a>
+    </nav>
+    <a class="wa-btn" href="https://wa.me/972524808787">וואטסאפ</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">ביטוח נסיעות לחו"ל · מחשבון מחיר</div>
+  <h1>כמה יעלה לכם <em>ביטוח הנסיעות?</em></h1>
+  <p class="sub">הזינו את גילאי הנוסעים, היעד, משך הנסיעה וההרחבות הרצויות — וקבלו הערכת מחיר מיידית לפוליסה היומית של פספורטכארד. את הביטוח אפשר לרכוש אונליין תוך דקות.</p>
+  <div class="pc-chip"><b>PassportCard</b> לפי תעריפון נובמבר 2025 · המחירים בדולר ארה"ב</div>
+</section>
+
+<main id="calc">
+  <section>
+    <div class="card">
+      <h2>פרטי הנסיעה</h2>
+      <div class="row">
+        <div class="field">
+          <label for="days">מספר ימי נסיעה</label>
+          <input type="number" id="days" min="1" max="365" value="7">
+        </div>
+        <div class="field">
+          <label id="dest-label">יעד</label>
+          <div class="seg" role="group" aria-labelledby="dest-label">
+            <button type="button" id="dest-world" class="on">כל העולם</button>
+            <button type="button" id="dest-usa">ארה"ב</button>
+          </div>
+        </div>
+      </div>
+      <div id="trip-warns"></div>
+    </div>
+
+    <div class="card">
+      <h2>נוסעים והרחבות</h2>
+      <div class="travelers" id="travelers"></div>
+      <button class="add-btn" id="add-traveler" type="button">+ הוספת נוסע</button>
+      <button class="icon-btn" id="clone-exts" type="button" style="margin-top:12px">החל את ההרחבות של נוסע 1 על כל הנוסעים</button>
+    </div>
+  </section>
+
+  <aside class="summary">
+    <div class="card">
+      <div class="summary-head">
+        <div class="label">סה"כ מוערך</div>
+        <div class="total" id="grand-total">$0</div>
+        <div class="per" id="grand-sub"></div>
+      </div>
+      <div class="summary-body">
+        <div id="breakdown"></div>
+        <a class="buy-btn" href="https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D" target="_blank" rel="noopener">✈ לרכישת הביטוח אונליין »</a>
+        <button class="copy-btn" id="copy-quote" type="button">העתקת פירוט ההצעה</button>
+        <div class="foot-note">
+          המחיר המוצג הוא הערכה בלבד לפי תעריפון נובמבר 2025 של פספורטכארד, ואינו מהווה הצעת ביטוח מחייבת. המחיר הסופי נקבע בתהליך הרכישה. הכיסוי כפוף לתנאי הפוליסה וחריגיה, וההצטרפות כפופה לחיתום רפואי. הרכישה מתבצעת באתר חיצוני של פספורטכארד; ייתכן שלמשה ורנר זיקה ו/או תגמול בגין רכישה דרך קישור זה.
+        </div>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  <div class="fwrap">
+    <div class="fbrand">
+      <div class="nm">משה ורנר</div>
+      <div class="tg">WEALTH · INSURANCE</div>
+    </div>
+    <div class="fcols">
+      <div class="col">
+        <h4>ניווט</h4>
+        <a href="index.html#services">תחומים</a>
+        <a href="index.html#about">אודות</a>
+        <a href="articles.html">מאמרים</a>
+        <a href="travel.html">ביטוח נסיעות לחו"ל</a>
+      </div>
+      <div class="col">
+        <h4>יצירת קשר</h4>
+        <a href="https://wa.me/972524808787">וואטסאפ: 052-480-8787</a>
+        <a href="mailto:moshev@shaham.co.il">moshev@shaham.co.il</a>
+        <a href="index.html#contact">השארת פרטים</a>
+      </div>
+    </div>
+    <div class="legal">
+      משה ורנר — סוכן ביטוח עצמאי בעל רישיון מטעם רשות שוק ההון, ביטוח וחיסכון (רישיון מס' 028614238), הפועל תחת בית הסוכן שחם-אורלן. המחשבון בעמוד זה מציג הערכת מחיר בלבד על בסיס תעריפון פספורטכארד (נובמבר 2025) והוא כלי עזר שיווקי; אין באמור משום הצעת ביטוח, ייעוץ או המלצה, ואין בו כדי להחליף את הוראות הפוליסה ותנאיה המלאים, הקובעים. בכל מקרה של סתירה — נוסח הפוליסה גובר. הרכישה מתבצעת באתר פספורטכארד וייתכן שלמשה ורנר זיקה ו/או תגמול בגין רכישה באמצעות הקישור.
+    </div>
+    <div class="copyr">© משה ורנר · רישיון 028614238 · כל הזכויות שמורות · <a href="privacy.html">מדיניות פרטיות</a> · <a href="accessibility.html">הצהרת נגישות</a></div>
+  </div>
+</footer>
+
+<script>
+/* ===== נתוני תעריפון פספורטכארד – נובמבר 2025 ===== */
+const BASE_RATES = [
+  {min:0,  max:60, world:3.00,  usa30:1.25,  usa31:3.15},
+  {min:61, max:65, world:4.45,  usa30:3.60,  usa31:5.65},
+  {min:66, max:70, world:5.35,  usa30:5.85,  usa31:8.95},
+  {min:71, max:75, world:17.00, usa30:7.10,  usa31:13.30},
+  {min:76, max:79, world:26.75, usa30:12.30, usa31:null},
+  {min:80, max:84, world:26.75, usa30:12.30, usa31:null},
+];
+const MAX_PERIOD = [
+  {min:0,  max:18, days:90,  longTerm:365},
+  {min:19, max:45, days:180, longTerm:365},
+  {min:46, max:60, days:180, longTerm:180},
+  {min:61, max:75, days:90,  longTerm:90},
+  {min:76, max:84, days:30,  longTerm:30},
+];
+function preexistingRate(age){
+  if(age<=50) return 3.5;
+  if(age<=60) return 4.4;
+  if(age<=70) return 5.0;
+  return 0;
+}
+const EXT_DEFS = [
+  {id:'cancel', label:'ביטול וקיצור נסיעה', type:'select', options:[
+      {v:'', t:'ללא'},
+      {v:'basic', t:'בסיסי – ביטול עד $4,000'},
+      {v:'ext',   t:'מורחב – ביטול עד $8,000'},
+    ], hint:'$0.80/יום (עד $16 לנסיעה) · מורחב $2/יום · כולל מקיף קורונה חינם'},
+  {id:'baggage', label:'כבודה (עד $2,500)', type:'check', hint:'$0.5/יום'},
+  {id:'valuable', label:'פריט יקר ערך (עד $2,000)', type:'check', hint:'$2/יום'},
+  {id:'phone', label:'גניבת מכשיר סלולארי', type:'select', options:[
+      {v:'', t:'ללא'},
+      {v:'800',  t:'כיסוי $800'},
+      {v:'1600', t:'כיסוי $1,600'},
+    ], hint:'$1.6/יום (עד $89.6 לנסיעה) · $2.1/יום'},
+  {id:'laptop', label:'גניבת מחשב נייד / טאבלט', type:'select', options:[
+      {v:'', t:'ללא'},
+      {v:'750',  t:'כיסוי $750'},
+      {v:'1500', t:'כיסוי $1,500'},
+      {v:'2000', t:'כיסוי $2,000'},
+    ], hint:'$0.5 / $1.0 / $1.5 ליום'},
+  {id:'camera', label:'גניבת מצלמה', type:'select', options:[
+      {v:'', t:'ללא'},
+      {v:'750',  t:'כיסוי $750'},
+      {v:'1500', t:'כיסוי $1,500'},
+      {v:'2000', t:'כיסוי $2,000'},
+    ], hint:'$0.5 / $1.0 / $1.5 ליום'},
+  {id:'preexisting', label:'החמרה במצב רפואי קיים (עד $350,000)', type:'check', hint:'לפי גיל · מגיל 71 כלול בבסיס'},
+  {id:'accidents', label:'תאונות אישיות (עד $30,000)', type:'check', hint:'$0.75/יום · גילאי 0-75 · עד 30 ימים', maxAge:75},
+  {id:'leisure', label:'כרטיסי בילוי (עד $500)', type:'check', hint:'$5 לנסיעה'},
+  {id:'pregnancy', label:'הרחבת הריון', type:'check', hint:'$5/יום · עד גיל 39 · חזרה עד שבוע 32', maxAge:39},
+  {id:'winter', label:'ספורט חורף', type:'check', hint:'$10/יום · מגיל 76 בכפוף לחיתום'},
+  {id:'adventure', label:'ספורט אתגרי', type:'check', hint:'$0.5/יום (מ-31 ימים: $1/יום) · גילאי 0-75', maxAge:75},
+  {id:'rental', label:'ביטול השתתפות עצמית ברכב שכור', type:'select', options:[
+      {v:'', t:'ללא'},
+      {v:'road', t:'רכב/אופנוע בכביש – $8'},
+      {v:'offroad', t:'ג\'יפ בנסיעת שטח – $15'},
+    ], hint:'גילאי 24-80 · עד $1,500', minAge:24, maxAge:80},
+  {id:'longterm', label:'נסיעה לטווח ארוך (מוקד בלבד)', type:'check', hint:'$2.3/יום · גילאי 0-45 · לתקופות 60-365 ימים', maxAge:45},
+  {id:'operational', label:'ביטול נסיעה עקב פעילות מבצעית', type:'check', hint:'$0.5/יום · משרתי כוחות הביטחון'},
+  {id:'noSearch', label:'הסרת כיסוי איתור, חיפוש וחילוץ', type:'check', hint:'הנחה של $0.20/יום'},
+];
+
+let state = { days: 7, dest: 'world', travelers: [ newTraveler() ] };
+
+function newTraveler(){
+  const t = {age: 30, ext: {}};
+  EXT_DEFS.forEach(d => t.ext[d.id] = d.type==='select' ? '' : false);
+  return t;
+}
+function fmt(n){ return '$' + n.toFixed(2).replace(/\.00$/,''); }
+function baseRate(age){ return BASE_RATES.find(r => age>=r.min && age<=r.max) || null; }
+function maxPeriod(age){ return MAX_PERIOD.find(r => age>=r.min && age<=r.max) || null; }
+
+function calcTraveler(t){
+  const days = state.days;
+  const long = days >= 31;
+  const lines = [];
+  const warns = [];
+  let total = 0;
+
+  if(t.age >= 85){
+    return {total:0, lines:[], warns:['גיל 85+ – הצטרפות בכפוף לקבלת מסמכים דרך מוקד המכירות של פספורטכארד. לא ניתן לתמחר אוטומטית.'], blocked:true};
+  }
+  const rate = baseRate(t.age);
+  if(!rate) return {total:0, lines:[], warns:['גיל לא תקין'], blocked:true};
+
+  const mp = maxPeriod(t.age);
+  if(mp){
+    const limit = t.ext.longterm ? mp.longTerm : mp.days;
+    if(days > limit){
+      warns.push(`תקופת הביטוח המירבית לגיל ${t.age} היא ${limit} ימים${t.ext.longterm?'':' (ייתכן שניתן להאריך עם הרחבת נסיעה לטווח ארוך)'} – הנסיעה חורגת.`);
+    }
+  }
+
+  const baseAmt = rate.world * days;
+  lines.push({name:`פוליסת בסיס (${fmt(rate.world)} ליום × ${days})`, amount:baseAmt});
+  total += baseAmt;
+
+  if(state.dest === 'usa'){
+    const supp = long ? rate.usa31 : rate.usa30;
+    if(supp == null){
+      warns.push('לא קיים תעריף ארה"ב לנסיעה של 31+ ימים בקבוצת גיל זו (מגבלת 30 ימים).');
+    } else {
+      const amt = supp * days;
+      lines.push({name:`תוספת ארה"ב (${fmt(supp)} ליום${long?' – תעריף 31+ ימים':''})`, amount:amt});
+      total += amt;
+    }
+  }
+
+  const e = t.ext;
+  if(e.noSearch){
+    const amt = -0.20 * days;
+    lines.push({name:'הסרת איתור, חיפוש וחילוץ (-$0.20 ליום)', amount:amt});
+    total += amt;
+  }
+  if(e.cancel){
+    if(e.cancel === 'basic'){
+      const amt = Math.min(0.80 * days, 16);
+      lines.push({name:'ביטול וקיצור נסיעה – בסיסי', amount:amt});
+      total += amt;
+    } else {
+      const amt = 2 * days;
+      lines.push({name:'ביטול וקיצור נסיעה – מורחב ($2 ליום)', amount:amt});
+      total += amt;
+    }
+    lines.push({name:'מקיף קורונה', free:true});
+  }
+  if(e.baggage){ const a=0.5*days; lines.push({name:'כבודה ($0.5 ליום)', amount:a}); total+=a; }
+  if(e.valuable){ const a=2*days; lines.push({name:'פריט יקר ערך ($2 ליום)', amount:a}); total+=a; }
+  if(e.phone){
+    let a;
+    if(e.phone==='800'){ a=Math.min(1.6*days, 89.6); lines.push({name:'גניבת סלולארי – כיסוי $800', amount:a}); }
+    else { a=2.1*days; lines.push({name:'גניבת סלולארי – כיסוי $1,600 ($2.1 ליום)', amount:a}); }
+    total+=a;
+  }
+  if(e.laptop){
+    const perDay = {750:0.5, 1500:1.0, 2000:1.5}[e.laptop];
+    const a = perDay*days;
+    lines.push({name:`גניבת מחשב נייד – כיסוי $${Number(e.laptop).toLocaleString()} (${fmt(perDay)} ליום)`, amount:a});
+    total+=a;
+  }
+  if(e.camera){
+    const perDay = {750:0.5, 1500:1.0, 2000:1.5}[e.camera];
+    const a = perDay*days;
+    lines.push({name:`גניבת מצלמה – כיסוי $${Number(e.camera).toLocaleString()} (${fmt(perDay)} ליום)`, amount:a});
+    total+=a;
+  }
+  if(e.preexisting){
+    const r = preexistingRate(t.age);
+    if(r === 0){
+      lines.push({name:'החמרה במצב רפואי קיים – כלול בבסיס מגיל 71', free:true});
+    } else {
+      const a = r*days;
+      lines.push({name:`החמרה במצב רפואי קיים (${fmt(r)} ליום)`, amount:a});
+      total+=a;
+    }
+  }
+  if(e.accidents){
+    if(t.age > 75){
+      warns.push('תאונות אישיות – זמין עד גיל 75 בלבד, לא נכלל בתמחור.');
+    } else {
+      if(days > 30) warns.push('תאונות אישיות – מוגבל לנסיעות עד 30 ימים.');
+      const a = 0.75*days; lines.push({name:'תאונות אישיות ($0.75 ליום)', amount:a}); total+=a;
+    }
+  }
+  if(e.leisure){ lines.push({name:'הרחבה לכרטיסי בילוי ($5 לנסיעה)', amount:5}); total+=5; }
+  if(e.pregnancy){
+    if(t.age > 39){
+      warns.push('הרחבת הריון – זמינה עד גיל 39 בלבד, לא נכללה בתמחור.');
+    } else { const a=5*days; lines.push({name:'הרחבת הריון ($5 ליום)', amount:a}); total+=a; }
+  }
+  if(e.winter){
+    const a=10*days; lines.push({name:'ספורט חורף ($10 ליום)', amount:a}); total+=a;
+    if(t.age >= 76) warns.push('ספורט חורף מגיל 76 – בכפוף לחיתום רפואי.');
+  }
+  if(e.adventure){
+    if(t.age > 75){
+      warns.push('ספורט אתגרי – זמין עד גיל 75 בלבד, לא נכלל בתמחור.');
+    } else {
+      const perDay = long ? 1 : 0.5;
+      const a = perDay*days;
+      lines.push({name:`ספורט אתגרי (${fmt(perDay)} ליום${long?' – תעריף 31+ ימים':''})`, amount:a});
+      total+=a;
+    }
+  }
+  if(e.rental){
+    if(t.age < 24 || t.age > 80){
+      warns.push('ביטול השתתפות עצמית ברכב שכור – זמין לגילאי 24-80 בלבד, לא נכלל בתמחור.');
+    } else {
+      const perDay = e.rental==='road' ? 8 : 15;
+      const a = perDay*days;
+      lines.push({name:`השתתפות עצמית רכב שכור – ${e.rental==='road'?'כביש':'שטח'} (${fmt(perDay)} ליום)`, amount:a});
+      total+=a;
+    }
+  }
+  if(e.longterm){
+    if(t.age > 45){
+      warns.push('הרחבת נסיעה לטווח ארוך – זמינה לגילאי 0-45 בלבד, לא נכללה בתמחור.');
+    } else {
+      if(days < 60) warns.push('הרחבת נסיעה לטווח ארוך מיועדת לתקופות של 60-365 ימים.');
+      const a = 2.3*days;
+      lines.push({name:'נסיעה לטווח ארוך ($2.3 ליום, מוקד בלבד)', amount:a}); total+=a;
+    }
+  }
+  if(e.operational){ const a=0.5*days; lines.push({name:'ביטול עקב פעילות מבצעית ($0.5 ליום)', amount:a}); total+=a; }
+
+  return {total, lines, warns, blocked:false};
+}
+
+/* ===== רינדור ===== */
+const $ = s => document.querySelector(s);
+
+function render(){ renderTravelers(); renderSummary(); renderTripWarns(); }
+
+function extEligible(def, age){
+  if(def.minAge != null && age < def.minAge) return false;
+  if(def.maxAge != null && age > def.maxAge) return false;
+  return true;
+}
+
+function renderTravelers(){
+  const box = $('#travelers');
+  box.innerHTML = '';
+  state.travelers.forEach((t, i) => {
+    const el = document.createElement('div');
+    el.className = 'traveler';
+    const head = document.createElement('div');
+    head.className = 'traveler-head';
+    head.innerHTML = `
+      <span class="num" aria-hidden="true">${i+1}</span>
+      <div class="field" style="flex:0">
+        <label for="age-${i}">גיל נוסע ${i+1}</label>
+        <input type="number" id="age-${i}" min="0" max="120" value="${t.age}">
+      </div>
+      <span class="spacer"></span>
+      ${state.travelers.length>1 ? `<button class="icon-btn" data-remove="${i}" type="button" aria-label="הסרת נוסע ${i+1}">✕ הסרה</button>` : ''}
+    `;
+    el.appendChild(head);
+
+    const exts = document.createElement('div');
+    exts.className = 'exts';
+    EXT_DEFS.forEach(def => {
+      const eligible = extEligible(def, t.age);
+      const wrap = document.createElement('div');
+      wrap.className = 'ext' + (eligible ? '' : ' disabled');
+      if(def.type === 'check'){
+        wrap.innerHTML = `
+          <input type="checkbox" id="ext-${i}-${def.id}" ${t.ext[def.id]?'checked':''} ${eligible?'':'disabled'} data-t="${i}" data-ext="${def.id}">
+          <label for="ext-${i}-${def.id}">${def.label}<br><span class="price-hint">${def.hint}</span></label>
+        `;
+      } else {
+        const opts = def.options.map(o=>`<option value="${o.v}" ${t.ext[def.id]===o.v?'selected':''}>${o.t}</option>`).join('');
+        wrap.innerHTML = `
+          <label for="sel-${i}-${def.id}" style="flex:1">${def.label}<br><span class="price-hint">${def.hint}</span></label>
+          <select id="sel-${i}-${def.id}" ${eligible?'':'disabled'} data-t="${i}" data-ext="${def.id}">${opts}</select>
+        `;
+      }
+      exts.appendChild(wrap);
+    });
+    el.appendChild(exts);
+    box.appendChild(el);
+  });
+}
+
+function renderTripWarns(){
+  const box = $('#trip-warns');
+  box.innerHTML = '';
+  if(state.days >= 31){
+    const w = document.createElement('div');
+    w.className = 'warn';
+    w.textContent = 'נסיעה של 31 ימים ומעלה – התעריפים המוגדלים (תוספת ארה"ב, ספורט אתגרי) חלים מהיום הראשון.';
+    box.appendChild(w);
+  }
+}
+
+function renderSummary(){
+  const box = $('#breakdown');
+  box.innerHTML = '';
+  let grand = 0;
+  let anyBlocked = false;
+
+  state.travelers.forEach((t, i) => {
+    const r = calcTraveler(t);
+    grand += r.total;
+    if(r.blocked) anyBlocked = true;
+
+    const block = document.createElement('div');
+    block.className = 't-block';
+    let html = `<div class="t-title"><span>נוסע ${i+1} · גיל ${t.age}</span><span class="amt">${r.blocked?'—':fmt(r.total)}</span></div>`;
+    if(r.lines.length){
+      html += `<div class="t-lines">` + r.lines.map(l =>
+        `<div class="ln"><span>${l.name}</span><span class="v ${l.free?'free':''}">${l.free?'חינם':fmt(l.amount)}</span></div>`
+      ).join('') + `</div>`;
+    }
+    r.warns.forEach(w => html += `<div class="warn ${r.blocked?'err':''}">${w}</div>`);
+    block.innerHTML = html;
+    box.appendChild(block);
+  });
+
+  $('#grand-total').textContent = fmt(grand);
+  $('#grand-sub').textContent = `${state.travelers.length} נוסעים · ${state.days} ימים · ${state.dest==='usa'?'ארה"ב':'כל העולם'}` + (anyBlocked ? ' · חלק מהנוסעים דורשים מוקד' : '');
+}
+
+function buildQuoteText(){
+  const destName = state.dest==='usa' ? 'ארה"ב' : 'כל העולם';
+  let out = `הערכת מחיר – ביטוח נסיעות לחו"ל (פספורטכארד)\n`;
+  out += `יעד: ${destName} | משך הנסיעה: ${state.days} ימים\n`;
+  out += `——————————————\n`;
+  let grand = 0;
+  state.travelers.forEach((t,i) => {
+    const r = calcTraveler(t);
+    if(r.blocked){
+      out += `נוסע ${i+1} (גיל ${t.age}): תמחור דרך מוקד המכירות בלבד\n`;
+      return;
+    }
+    grand += r.total;
+    out += `נוסע ${i+1} (גיל ${t.age}): ${fmt(r.total)}\n`;
+    r.lines.forEach(l => { out += `  • ${l.name}: ${l.free?'ללא עלות':fmt(l.amount)}\n`; });
+  });
+  out += `——————————————\n`;
+  out += `סה"כ לכל הנוסעים: ${fmt(grand)}\n\n`;
+  out += `הערכה בלבד לפי תעריפון נובמבר 2025; המחיר הסופי נקבע ברכישה. הכיסוי כפוף לתנאי הפוליסה וחריגיה.\n`;
+  out += `משה ורנר, סוכן ביטוח מורשה · וואטסאפ 052-480-8787\n`;
+  out += `לרכישה אונליין: https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D`;
+  return out;
+}
+
+/* ===== אירועים ===== */
+$('#days').addEventListener('input', e => {
+  state.days = Math.max(1, parseInt(e.target.value)||1);
+  renderSummary(); renderTripWarns();
+});
+$('#dest-world').addEventListener('click', () => { state.dest='world'; $('#dest-world').classList.add('on'); $('#dest-usa').classList.remove('on'); renderSummary(); });
+$('#dest-usa').addEventListener('click', () => { state.dest='usa'; $('#dest-usa').classList.add('on'); $('#dest-world').classList.remove('on'); renderSummary(); });
+$('#add-traveler').addEventListener('click', () => { state.travelers.push(newTraveler()); render(); });
+$('#clone-exts').addEventListener('click', () => {
+  const src = state.travelers[0];
+  state.travelers.forEach((t,i) => { if(i>0) t.ext = JSON.parse(JSON.stringify(src.ext)); });
+  render();
+});
+$('#travelers').addEventListener('input', e => {
+  const el = e.target;
+  if(el.id && el.id.startsWith('age-')){
+    const i = parseInt(el.id.split('-')[1]);
+    state.travelers[i].age = Math.max(0, parseInt(el.value)||0);
+    refreshExtAvailability(i);
+  }
+});
+$('#travelers').addEventListener('change', e => {
+  const el = e.target;
+  if(el.dataset.ext != null){
+    const i = parseInt(el.dataset.t);
+    state.travelers[i].ext[el.dataset.ext] = el.type==='checkbox' ? el.checked : el.value;
+    renderSummary();
+  }
+});
+$('#travelers').addEventListener('click', e => {
+  const btn = e.target.closest('[data-remove]');
+  if(btn){ state.travelers.splice(parseInt(btn.dataset.remove),1); render(); }
+});
+
+function refreshExtAvailability(i){
+  const t = state.travelers[i];
+  EXT_DEFS.forEach(def => {
+    const eligible = extEligible(def, t.age);
+    const input = document.getElementById((def.type==='check'?'ext-':'sel-')+i+'-'+def.id);
+    if(!input) return;
+    input.disabled = !eligible;
+    input.closest('.ext').classList.toggle('disabled', !eligible);
+    if(!eligible){
+      if(def.type==='check'){ input.checked=false; t.ext[def.id]=false; }
+      else { input.value=''; t.ext[def.id]=''; }
+    }
+  });
+  renderSummary();
+}
+
+$('#copy-quote').addEventListener('click', async () => {
+  const text = buildQuoteText();
+  const btn = $('#copy-quote');
+  try{ await navigator.clipboard.writeText(text); }
+  catch(err){
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); ta.remove();
+  }
+  btn.textContent = '✓ הפירוט הועתק';
+  btn.classList.add('copied');
+  setTimeout(()=>{ btn.textContent='העתקת פירוט ההצעה'; btn.classList.remove('copied'); }, 1800);
+});
+
+render();
+</script>
+</body>
+</html>
