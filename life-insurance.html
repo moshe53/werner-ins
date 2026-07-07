@@ -329,7 +329,7 @@ body{font-size:16px}
  if(ov)ov.addEventListener('click',closeNav);
  document.querySelectorAll('a[href*="#"]').forEach(function(a){a.addEventListener('click',function(ev){
    var href=a.getAttribute('href')||'';var i=href.indexOf('#');if(i<0)return;
-   var hash=href.substring(i+1);if(!hash)return;
+   var path=href.substring(0,i);if(path){closeNav();return;}var hash=href.substring(i+1);if(!hash)return;
    var el=document.getElementById(hash);if(!el){closeNav();return;}
    ev.preventDefault();closeNav();
    var y=el.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop)-78;
