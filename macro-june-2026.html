@@ -325,7 +325,7 @@ body{font-size:16px}
    var txt='שלום משה, הגעתי מהאתר.\nשם: '+nm+'\nטלפון: '+ph;
    if(sub)txt+='\nנושא: '+sub;
    if(msg.trim())txt+='\nהודעה: '+msg;
-   window.open('https://wa.me/972524808787?text='+encodeURIComponent(txt),'_blank');
+   window.open('https://wa.me/972524808787?text='+encodeURIComponent(txt),'_blank');setTimeout(function(){window.location.href='thank-you.html';},600);
  };
  (function(){var root=document.documentElement,bd=document.body;
   function L(k,d){try{return localStorage.getItem(k)||d}catch(e){return d}}
