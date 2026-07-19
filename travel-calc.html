@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#06211C">
 <title>מחשבון ביטוח נסיעות לחו"ל | משה ורנר</title>
-<meta name="description" content="מחשבון מחיר לביטוח נסיעות לחו&quot;ל של פספורטכארד — לפי גיל, יעד, משך הנסיעה והרחבות. קבלו הערכת מחיר מיידית.">
+<meta name="description" content="מחשבון מחיר לביטוח נסיעות לחו&quot;ל — פספורטכארד ומגדל מסע עולמי. לפי גיל, יעד, משך הנסיעה והרחבות. קבלו הערכת מחיר מיידית.">
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Frank+Ruhl+Libre:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -18,6 +18,7 @@
   --cream:#F2ECE0;
   --muted:#8FA69F;
   --pc-red:#E4002B;
+  --migdal-blue:#1B2A6B;
   --green:#7FC8A9;
   --warn:#E8C077;
 }
@@ -36,7 +37,6 @@ header{
   position:sticky;top:0;z-index:50;
   background:rgba(6,33,28,.94);
   border-bottom:1px solid var(--line);
-  backdrop-filter:none;
 }
 .hwrap{max-width:1120px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .brand{display:flex;flex-direction:column;text-decoration:none;line-height:1.15}
@@ -62,12 +62,12 @@ nav a:hover,nav a:focus-visible{color:var(--gold-b);border-bottom-color:var(--go
   font-size:clamp(30px,5vw,52px);font-weight:900;letter-spacing:-.01em;line-height:1.15;max-width:760px;
 }
 .hero h1 em{font-style:normal;color:var(--gold-b)}
-.hero p.sub{color:var(--muted);max-width:640px;margin-top:16px;font-size:16.5px}
-.hero .pc-chip{
+.hero p.sub{color:var(--muted);max-width:660px;margin-top:16px;font-size:16.5px}
+.pc-chip{
   display:inline-flex;align-items:center;gap:8px;margin-top:18px;
   border:1px solid var(--line);border-radius:2px;padding:7px 14px;font-size:13px;color:var(--muted);
 }
-.hero .pc-chip b{color:#fff;background:var(--pc-red);border-radius:3px;padding:2px 8px;font-size:12px;letter-spacing:.02em}
+.pc-chip b{color:#fff;border-radius:3px;padding:2px 8px;font-size:12px;letter-spacing:.02em}
 
 /* ===== Layout ===== */
 main{max-width:1120px;margin:10px auto 0;padding:0 20px 90px;display:grid;grid-template-columns:1fr 400px;gap:24px;align-items:start}
@@ -80,7 +80,7 @@ main{max-width:1120px;margin:10px auto 0;padding:0 20px 90px;display:grid;grid-t
 .card h2::after{content:"";flex:1;height:1px;background:var(--line)}
 .row{display:flex;gap:14px;flex-wrap:wrap}
 .field{display:flex;flex-direction:column;gap:6px;min-width:140px;flex:1}
-.field label{font-size:12.5px;font-weight:500;color:var(--muted);letter-spacing:.04em}
+.field label,.field .flabel{font-size:12.5px;font-weight:500;color:var(--muted);letter-spacing:.04em}
 input[type=number],select{
   font-family:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);
   border-radius:2px;background:var(--surface2);color:var(--cream);width:100%;
@@ -90,7 +90,7 @@ select option{background:var(--surface2);color:var(--cream)}
 .seg{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
 .seg button{
   flex:1;font-family:inherit;font-size:14px;font-weight:500;padding:10px 6px;border:none;
-  background:var(--surface2);color:var(--muted);cursor:pointer;
+  background:var(--surface2);color:var(--muted);cursor:pointer;white-space:nowrap;
 }
 .seg button.on{background:var(--gold);color:var(--bg);font-weight:800}
 .seg button:focus-visible{outline:2px solid var(--cream);outline-offset:-2px}
@@ -117,6 +117,7 @@ select option{background:var(--surface2);color:var(--cream)}
 .ext label{cursor:pointer;line-height:1.35;color:var(--cream)}
 .ext .price-hint{color:var(--muted);font-size:11.5px}
 .ext select{width:auto;font-size:13px;padding:6px 8px;margin-inline-start:4px}
+.ext .days-mini{width:64px;font-size:13px;padding:6px 8px;margin-inline-start:4px}
 .ext.disabled{opacity:.38}
 .ext.disabled label,.ext.disabled input{cursor:not-allowed}
 .add-btn{
@@ -206,12 +207,32 @@ footer{border-top:1px solid var(--line);background:#041814;margin-top:20px}
 <section class="hero">
   <div class="eyebrow">ביטוח נסיעות לחו"ל · מחשבון מחיר</div>
   <h1>כמה יעלה לכם <em>ביטוח הנסיעות?</em></h1>
-  <p class="sub">הזינו את גילאי הנוסעים, היעד, משך הנסיעה וההרחבות הרצויות — וקבלו הערכת מחיר מיידית לפוליסה היומית של פספורטכארד. את הביטוח אפשר לרכוש אונליין תוך דקות.</p>
-  <div class="pc-chip"><b>PassportCard</b> לפי תעריפון נובמבר 2025 · המחירים בדולר ארה"ב</div>
+  <p class="sub">בחרו חברת ביטוח, הזינו את גילאי הנוסעים, היעד, משך הנסיעה וההרחבות הרצויות — וקבלו הערכת מחיר מיידית.</p>
+  <div class="pc-chip" id="tariff-chip"><b id="chip-brand" style="background:var(--pc-red)">PassportCard</b> <span id="chip-text">לפי תעריפון נובמבר 2025 · המחירים בדולר ארה"ב</span></div>
 </section>
 
 <main id="calc">
   <section>
+    <div class="card">
+      <h2>חברת הביטוח והמסלול</h2>
+      <div class="row">
+        <div class="field">
+          <span class="flabel" id="comp-label">חברת ביטוח</span>
+          <div class="seg" role="group" aria-labelledby="comp-label">
+            <button type="button" id="comp-pc" class="on">פספורטכארד</button>
+            <button type="button" id="comp-migdal">מגדל מסע עולמי</button>
+          </div>
+        </div>
+        <div class="field" id="plan-field" style="display:none">
+          <span class="flabel" id="plan-label">מסלול</span>
+          <div class="seg" role="group" aria-labelledby="plan-label">
+            <button type="button" id="plan-plat" class="on">פלטינום</button>
+            <button type="button" id="plan-lc">LOWCOST</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="card">
       <h2>פרטי הנסיעה</h2>
       <div class="row">
@@ -220,7 +241,7 @@ footer{border-top:1px solid var(--line);background:#041814;margin-top:20px}
           <input type="number" id="days" min="1" max="365" value="7">
         </div>
         <div class="field">
-          <label id="dest-label">יעד</label>
+          <span class="flabel" id="dest-label">יעד</span>
           <div class="seg" role="group" aria-labelledby="dest-label">
             <button type="button" id="dest-world" class="on">כל העולם</button>
             <button type="button" id="dest-usa">ארה"ב</button>
@@ -247,10 +268,10 @@ footer{border-top:1px solid var(--line);background:#041814;margin-top:20px}
       </div>
       <div class="summary-body">
         <div id="breakdown"></div>
-        <a class="buy-btn" href="https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D" target="_blank" rel="noopener">✈ לרכישת הביטוח אונליין »</a>
+        <a class="buy-btn" id="buy-btn" href="https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D" target="_blank" rel="noopener">✈ לרכישת הביטוח אונליין »</a>
         <button class="copy-btn" id="copy-quote" type="button">העתקת פירוט ההצעה</button>
         <div class="foot-note">
-          המחיר המוצג הוא הערכה בלבד לפי תעריפון נובמבר 2025 של פספורטכארד, ואינו מהווה הצעת ביטוח מחייבת. המחיר הסופי נקבע בתהליך הרכישה. הכיסוי כפוף לתנאי הפוליסה וחריגיה, וההצטרפות כפופה לחיתום רפואי. הרכישה מתבצעת באתר חיצוני של פספורטכארד; ייתכן שלמשה ורנר זיקה ו/או תגמול בגין רכישה דרך קישור זה.
+          המחיר המוצג הוא הערכה בלבד — לפי תעריפון פספורטכארד (נובמבר 2025) ותעריפון מגדל מסע עולמי (מאי 2026) — ואינו מהווה הצעת ביטוח מחייבת. המחיר הסופי נקבע בתהליך הרכישה, לפני תוספות רפואיות ככל שתיקבענה. הכיסוי כפוף לתנאי הפוליסה וחריגיה, וההצטרפות כפופה לחיתום רפואי. רכישת פספורטכארד מתבצעת באתר חיצוני; ייתכן שלמשה ורנר זיקה ו/או תגמול בגין רכישה דרך הקישור.
         </div>
       </div>
     </div>
@@ -279,15 +300,20 @@ footer{border-top:1px solid var(--line);background:#041814;margin-top:20px}
       </div>
     </div>
     <div class="legal">
-      משה ורנר — סוכן ביטוח עצמאי בעל רישיון מטעם רשות שוק ההון, ביטוח וחיסכון (רישיון מס' 028614238), הפועל תחת בית הסוכן שחם-אורלן. המחשבון בעמוד זה מציג הערכת מחיר בלבד על בסיס תעריפון פספורטכארד (נובמבר 2025) והוא כלי עזר שיווקי; אין באמור משום הצעת ביטוח, ייעוץ או המלצה, ואין בו כדי להחליף את הוראות הפוליסה ותנאיה המלאים, הקובעים. בכל מקרה של סתירה — נוסח הפוליסה גובר. הרכישה מתבצעת באתר פספורטכארד וייתכן שלמשה ורנר זיקה ו/או תגמול בגין רכישה באמצעות הקישור.
+      משה ורנר — סוכן ביטוח עצמאי בעל רישיון מטעם רשות שוק ההון, ביטוח וחיסכון (רישיון מס' 028614238), הפועל תחת בית הסוכן שחם-אורלן. המחשבון בעמוד זה מציג הערכת מחיר בלבד על בסיס תעריפוני החברות (פספורטכארד — נובמבר 2025; מגדל מסע עולמי — מאי 2026) והוא כלי עזר שיווקי; אין באמור משום הצעת ביטוח, ייעוץ או המלצה, ואין בו כדי להחליף את הוראות הפוליסה ותנאיה המלאים, הקובעים. בכל מקרה של סתירה — נוסח הפוליסה גובר. רכישת פספורטכארד מתבצעת באתר החברה וייתכן שלמשה ורנר זיקה ו/או תגמול בגין רכישה באמצעות הקישור.
     </div>
     <div class="copyr">© משה ורנר · רישיון 028614238 · כל הזכויות שמורות · <a href="privacy.html">מדיניות פרטיות</a> · <a href="accessibility.html">הצהרת נגישות</a></div>
   </div>
 </footer>
 
 <script>
-/* ===== נתוני תעריפון פספורטכארד – נובמבר 2025 ===== */
-const BASE_RATES = [
+/* ============================================================
+   נתוני תעריפונים
+   פספורטכארד – נובמבר 2025 | מגדל מסע עולמי – מאי 2026
+   ============================================================ */
+
+/* ----- פספורטכארד: בסיס + תוספת ארה"ב ----- */
+const PC_RATES = [
   {min:0,  max:60, world:3.00,  usa30:1.25,  usa31:3.15},
   {min:61, max:65, world:4.45,  usa30:3.60,  usa31:5.65},
   {min:66, max:70, world:5.35,  usa30:5.85,  usa31:8.95},
@@ -295,20 +321,49 @@ const BASE_RATES = [
   {min:76, max:79, world:26.75, usa30:12.30, usa31:null},
   {min:80, max:84, world:26.75, usa30:12.30, usa31:null},
 ];
-const MAX_PERIOD = [
+const PC_MAX_PERIOD = [
   {min:0,  max:18, days:90,  longTerm:365},
   {min:19, max:45, days:180, longTerm:365},
   {min:46, max:60, days:180, longTerm:180},
   {min:61, max:75, days:90,  longTerm:90},
   {min:76, max:84, days:30,  longTerm:30},
 ];
-function preexistingRate(age){
+function pcPreexistingRate(age){
   if(age<=50) return 3.5;
   if(age<=60) return 4.4;
   if(age<=70) return 5.0;
-  return 0;
+  return 0; // 71+ כלול בבסיס
 }
-const EXT_DEFS = [
+
+/* ----- מגדל: מחיר מלא לפי יעד ----- */
+const MIGDAL_PLAT = [
+  {min:0,  max:17,  world:2.20,  usa:2.90,  maxDays:180},
+  {min:18, max:44,  world:2.42,  usa:3.53,  maxDays:180},
+  {min:45, max:60,  world:2.84,  usa:4.19,  maxDays:180},
+  {min:61, max:65,  world:4.84,  usa:6.90,  maxDays:120},
+  {min:66, max:70,  world:6.93,  usa:10.56, maxDays:120},
+  {min:71, max:75,  world:8.90,  usa:13.40, maxDays:120},
+  {min:76, max:80,  world:13.64, usa:21.03, maxDays:60},
+  {min:81, max:85,  world:17.30, usa:26.00, maxDays:30, uw:true},
+  {min:86, max:120, world:24.60, usa:36.90, maxDays:7,  uw:true},
+];
+const MIGDAL_LC = [
+  {min:0,  max:17, world:1.98, usa:2.85},
+  {min:18, max:44, world:2.09, usa:3.14},
+  {min:45, max:60, world:2.52, usa:3.81},
+];
+function migdalPreexistingRate(age){
+  if(age<=17) return 3.5;
+  if(age<=60) return 4.0;
+  if(age<=65) return 6.5;
+  if(age<=75) return 7.5;
+  if(age<=85) return 15;
+  return 20;
+}
+
+/* ----- הגדרות הרחבות ----- */
+/* type: check | select | checkdays (צ'קבוקס + בחירת מספר ימים) */
+const PC_EXTS = [
   {id:'cancel', label:'ביטול וקיצור נסיעה', type:'select', options:[
       {v:'', t:'ללא'},
       {v:'basic', t:'בסיסי – ביטול עד $4,000'},
@@ -349,18 +404,58 @@ const EXT_DEFS = [
   {id:'noSearch', label:'הסרת כיסוי איתור, חיפוש וחילוץ', type:'check', hint:'הנחה של $0.20/יום'},
 ];
 
-let state = { days: 7, dest: 'world', travelers: [ newTraveler() ] };
+const MIGDAL_PLAT_EXTS = [
+  {id:'mCancel', label:'ביטול / קיצור נסיעה (עד $6,000)', type:'check', hint:'$1.5/יום (76+: $2.5) · עד $15 לנסיעה · כולל הגדלת תקרה בזמן מגיפה חינם'},
+  {id:'mBaggage', label:'כבודה (עד $2,500)', type:'check', hint:'$0.40/יום'},
+  {id:'mLaptop', label:'מחשב אישי / טאבלט (עד $1,500)', type:'check', hint:'$0.80/יום · השתתפות עצמית $100'},
+  {id:'mPhone', label:'טלפון נייד / GPS (עד $1,000)', type:'check', hint:'$1.90/יום · השתתפות עצמית $30'},
+  {id:'mPreexisting', label:'החמרת מצב רפואי קיים (עד $350,000)', type:'check', hint:'לפי גיל: $3.5 עד $20 ליום'},
+  {id:'mPregnancy', label:'הרחבת הריון עד שבוע 32 (עד $200,000)', type:'check', hint:'$4/יום · נסיעה עד 60 יום'},
+  {id:'mWinter', label:'ספורט חורף', type:'checkdays', hint:'$6.75/יום · ניתן לבחור ימים'},
+  {id:'mAdventure', label:'ספורט אתגרי', type:'checkdays', hint:'$0.60/יום · ניתן לבחור ימים'},
+  {id:'mCompetitive', label:'ספורט תחרותי', type:'check', hint:'$2.5/יום'},
+  {id:'mRental', label:'ביטול השתתפות עצמית לרכב שכור (עד $1,500)', type:'checkdays', hint:'$6.50/יום · ניתן לבחור ימים'},
+  {id:'mNoSearch', label:'הסרת כיסוי איתור וחילוץ', type:'check', hint:'הנחה של $0.20/יום'},
+  {id:'mNoThird', label:'הסרת כיסוי צד ג\'', type:'check', hint:'הנחה של $0.20/יום'},
+];
 
-function newTraveler(){
-  const t = {age: 30, ext: {}};
-  EXT_DEFS.forEach(d => t.ext[d.id] = d.type==='select' ? '' : false);
+const MIGDAL_LC_EXTS = [
+  {id:'mNoThird', label:'הסרת כיסוי צד ג\'', type:'check', hint:'הנחה של $0.20/יום'},
+];
+
+/* ===== מצב ===== */
+let state = {
+  company: 'pc',        // pc | migdal
+  plan: 'plat',         // plat | lc (רלוונטי למגדל)
+  days: 7,
+  dest: 'world',        // world | usa
+  travelers: [],
+};
+
+function currentExtDefs(){
+  if(state.company === 'pc') return PC_EXTS;
+  return state.plan === 'plat' ? MIGDAL_PLAT_EXTS : MIGDAL_LC_EXTS;
+}
+function newTraveler(age){
+  const t = {age: age != null ? age : 30, ext: {}};
+  currentExtDefs().forEach(d => t.ext[d.id] = d.type==='select' ? '' : false);
   return t;
 }
+function resetTravelerExts(){
+  state.travelers = state.travelers.map(t => newTraveler(t.age));
+}
+state.travelers = [ newTraveler() ];
+
+/* ===== חישוב ===== */
 function fmt(n){ return '$' + n.toFixed(2).replace(/\.00$/,''); }
-function baseRate(age){ return BASE_RATES.find(r => age>=r.min && age<=r.max) || null; }
-function maxPeriod(age){ return MAX_PERIOD.find(r => age>=r.min && age<=r.max) || null; }
+function findRate(table, age){ return table.find(r => age>=r.min && age<=r.max) || null; }
 
 function calcTraveler(t){
+  return state.company === 'pc' ? calcPC(t) : calcMigdal(t);
+}
+
+/* ---------- פספורטכארד ---------- */
+function calcPC(t){
   const days = state.days;
   const long = days >= 31;
   const lines = [];
@@ -370,10 +465,10 @@ function calcTraveler(t){
   if(t.age >= 85){
     return {total:0, lines:[], warns:['גיל 85+ – הצטרפות בכפוף לקבלת מסמכים דרך מוקד המכירות של פספורטכארד. לא ניתן לתמחר אוטומטית.'], blocked:true};
   }
-  const rate = baseRate(t.age);
+  const rate = findRate(PC_RATES, t.age);
   if(!rate) return {total:0, lines:[], warns:['גיל לא תקין'], blocked:true};
 
-  const mp = maxPeriod(t.age);
+  const mp = findRate(PC_MAX_PERIOD, t.age);
   if(mp){
     const limit = t.ext.longterm ? mp.longTerm : mp.days;
     if(days > limit){
@@ -435,7 +530,7 @@ function calcTraveler(t){
     total+=a;
   }
   if(e.preexisting){
-    const r = preexistingRate(t.age);
+    const r = pcPreexistingRate(t.age);
     if(r === 0){
       lines.push({name:'החמרה במצב רפואי קיים – כלול בבסיס מגיל 71', free:true});
     } else {
@@ -496,10 +591,124 @@ function calcTraveler(t){
   return {total, lines, warns, blocked:false};
 }
 
+/* ---------- מגדל מסע עולמי ---------- */
+function calcMigdal(t){
+  const days = state.days;
+  const lines = [];
+  const warns = [];
+  let total = 0;
+  const e = t.ext;
+
+  if(state.plan === 'lc'){
+    const rate = findRate(MIGDAL_LC, t.age);
+    if(!rate){
+      return {total:0, lines:[], warns:['מסלול LOWCOST זמין לגילאי 0-60 בלבד. לנוסע זה יש לבחור במסלול פלטינום.'], blocked:true};
+    }
+    if(days > 14) warns.push('מסלול LOWCOST מוגבל לנסיעות עד 14 ימים – הנסיעה חורגת.');
+    const perDay = state.dest==='usa' ? rate.usa : rate.world;
+    const baseAmt = perDay * days;
+    lines.push({name:`מסלול LOWCOST${state.dest==='usa'?' לארה"ב':''} (${fmt(perDay)} ליום × ${days})`, amount:baseAmt});
+    total += baseAmt;
+    lines.push({name:'כולל צד ג\' ואיתור וחילוץ', free:true});
+    if(e.mNoThird){
+      const a = -0.20*days;
+      lines.push({name:'הסרת כיסוי צד ג\' (-$0.20 ליום)', amount:a});
+      total += a;
+    }
+    return {total, lines, warns, blocked:false};
+  }
+
+  /* פלטינום */
+  const rate = findRate(MIGDAL_PLAT, t.age);
+  if(!rate) return {total:0, lines:[], warns:['גיל לא תקין'], blocked:true};
+
+  if(rate.uw) warns.push(`גיל ${t.age} – ההצטרפות בכפוף לחיתום רפואי, ותקופת הביטוח המירבית היא ${rate.maxDays} ימים.`);
+  let maxDays = rate.maxDays;
+  if(e.mPregnancy) maxDays = Math.min(maxDays, 60);
+  if(days > maxDays){
+    warns.push(`תקופת הביטוח המירבית ${e.mPregnancy?'לרוכשות הרחבת הריון':'לגיל '+t.age} היא ${maxDays} ימים – הנסיעה חורגת.`);
+  }
+
+  const perDay = state.dest==='usa' ? rate.usa : rate.world;
+  const baseAmt = perDay * days;
+  lines.push({name:`פלטינום${state.dest==='usa'?' לארה"ב':''} (${fmt(perDay)} ליום × ${days})`, amount:baseAmt});
+  total += baseAmt;
+
+  if(e.mNoSearch){ const a=-0.20*days; lines.push({name:'הסרת איתור וחילוץ (-$0.20 ליום)', amount:a}); total+=a; }
+  if(e.mNoThird){ const a=-0.20*days; lines.push({name:'הסרת צד ג\' (-$0.20 ליום)', amount:a}); total+=a; }
+
+  if(e.mCancel){
+    const r = t.age <= 75 ? 1.5 : 2.5;
+    const a = Math.min(r*days, 15);
+    lines.push({name:`ביטול / קיצור נסיעה (${fmt(r)} ליום, עד $15)`, amount:a});
+    total += a;
+    lines.push({name:'הגדלת תקרת החזר בזמן מגיפה', free:true});
+  }
+  if(e.mBaggage){ const a=0.40*days; lines.push({name:'כבודה ($0.40 ליום)', amount:a}); total+=a; }
+  if(e.mLaptop){
+    const a=0.80*days; lines.push({name:'מחשב אישי / טאבלט ($0.80 ליום)', amount:a}); total+=a;
+    if(!e.mBaggage) warns.push('הרחבת מחשב/טאבלט היא הרחבת כבודה – יש לרכוש גם את הרחבת הכבודה הבסיסית.');
+  }
+  if(e.mPhone){
+    const a=1.90*days; lines.push({name:'טלפון נייד / GPS ($1.90 ליום)', amount:a}); total+=a;
+    if(!e.mBaggage) warns.push('הרחבת טלפון נייד היא הרחבת כבודה – יש לרכוש גם את הרחבת הכבודה הבסיסית.');
+  }
+  if(e.mPreexisting){
+    const r = migdalPreexistingRate(t.age);
+    const a = r*days;
+    lines.push({name:`החמרת מצב רפואי קיים (${fmt(r)} ליום)`, amount:a});
+    total += a;
+  }
+  if(e.mPregnancy){ const a=4*days; lines.push({name:'הרחבת הריון עד שבוע 32 ($4 ליום)', amount:a}); total+=a; }
+  if(e.mWinter){
+    const d = Math.min(e.mWinter, days);
+    const a = 6.75*d;
+    lines.push({name:`ספורט חורף ($6.75 × ${d} ימים)`, amount:a}); total+=a;
+  }
+  if(e.mAdventure){
+    const d = Math.min(e.mAdventure, days);
+    const a = 0.60*d;
+    lines.push({name:`ספורט אתגרי ($0.60 × ${d} ימים)`, amount:a}); total+=a;
+  }
+  if(e.mCompetitive){ const a=2.5*days; lines.push({name:'ספורט תחרותי ($2.5 ליום)', amount:a}); total+=a; }
+  if(e.mRental){
+    const d = Math.min(e.mRental, days);
+    const a = 6.50*d;
+    lines.push({name:`השתתפות עצמית רכב שכור ($6.50 × ${d} ימים)`, amount:a}); total+=a;
+  }
+
+  return {total, lines, warns, blocked:false};
+}
+
 /* ===== רינדור ===== */
 const $ = s => document.querySelector(s);
 
-function render(){ renderTravelers(); renderSummary(); renderTripWarns(); }
+function companyName(){
+  if(state.company==='pc') return 'פספורטכארד';
+  return 'מגדל מסע עולמי ' + (state.plan==='plat' ? 'פלטינום' : 'LOWCOST');
+}
+
+function render(){ renderTravelers(); renderSummary(); renderTripWarns(); renderChrome(); }
+
+function renderChrome(){
+  $('#plan-field').style.display = state.company==='migdal' ? '' : 'none';
+  const brand = $('#chip-brand'), txt = $('#chip-text');
+  if(state.company==='pc'){
+    brand.textContent = 'PassportCard';
+    brand.style.background = 'var(--pc-red)';
+    txt.textContent = 'לפי תעריפון נובמבר 2025 · המחירים בדולר ארה"ב';
+    const b = $('#buy-btn');
+    b.textContent = '✈ לרכישת הביטוח אונליין »';
+    b.href = 'https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D';
+  } else {
+    brand.textContent = 'מגדל';
+    brand.style.background = 'var(--migdal-blue)';
+    txt.textContent = 'מסע עולמי · לפי תעריפון מאי 2026 · המחירים בדולר ארה"ב';
+    const b = $('#buy-btn');
+    b.textContent = '✆ לרכישת הפוליסה – דברו איתי בוואטסאפ »';
+    b.href = 'https://wa.me/972524808787?text=' + encodeURIComponent('שלום משה, חישבתי מחיר לביטוח נסיעות של מגדל באתר ואשמח לסגור פוליסה');
+  }
+}
 
 function extEligible(def, age){
   if(def.minAge != null && age < def.minAge) return false;
@@ -510,6 +719,7 @@ function extEligible(def, age){
 function renderTravelers(){
   const box = $('#travelers');
   box.innerHTML = '';
+  const defs = currentExtDefs();
   state.travelers.forEach((t, i) => {
     const el = document.createElement('div');
     el.className = 'traveler';
@@ -528,14 +738,20 @@ function renderTravelers(){
 
     const exts = document.createElement('div');
     exts.className = 'exts';
-    EXT_DEFS.forEach(def => {
+    defs.forEach(def => {
       const eligible = extEligible(def, t.age);
       const wrap = document.createElement('div');
       wrap.className = 'ext' + (eligible ? '' : ' disabled');
-      if(def.type === 'check'){
+      if(def.type === 'check' || def.type === 'checkdays'){
+        const checked = !!t.ext[def.id];
+        let daysInput = '';
+        if(def.type==='checkdays' && checked){
+          daysInput = `<input type="number" class="days-mini" value="${t.ext[def.id]}" min="1" max="${state.days}" data-t="${i}" data-extdays="${def.id}" aria-label="מספר ימים ל${def.label}">`;
+        }
         wrap.innerHTML = `
-          <input type="checkbox" id="ext-${i}-${def.id}" ${t.ext[def.id]?'checked':''} ${eligible?'':'disabled'} data-t="${i}" data-ext="${def.id}">
-          <label for="ext-${i}-${def.id}">${def.label}<br><span class="price-hint">${def.hint}</span></label>
+          <input type="checkbox" id="ext-${i}-${def.id}" ${checked?'checked':''} ${eligible?'':'disabled'} data-t="${i}" data-ext="${def.id}" data-exttype="${def.type}">
+          <label for="ext-${i}-${def.id}" style="flex:1">${def.label}<br><span class="price-hint">${def.hint}</span></label>
+          ${daysInput}
         `;
       } else {
         const opts = def.options.map(o=>`<option value="${o.v}" ${t.ext[def.id]===o.v?'selected':''}>${o.t}</option>`).join('');
@@ -554,12 +770,19 @@ function renderTravelers(){
 function renderTripWarns(){
   const box = $('#trip-warns');
   box.innerHTML = '';
-  if(state.days >= 31){
+  const notes = [];
+  if(state.company==='pc' && state.days >= 31){
+    notes.push('נסיעה של 31 ימים ומעלה – התעריפים המוגדלים (תוספת ארה"ב, ספורט אתגרי) חלים מהיום הראשון.');
+  }
+  if(state.company==='migdal' && state.plan==='lc' && state.days > 14){
+    notes.push('מסלול LOWCOST של מגדל מוגבל לנסיעות עד 14 ימים.');
+  }
+  notes.forEach(n => {
     const w = document.createElement('div');
     w.className = 'warn';
-    w.textContent = 'נסיעה של 31 ימים ומעלה – התעריפים המוגדלים (תוספת ארה"ב, ספורט אתגרי) חלים מהיום הראשון.';
+    w.textContent = n;
     box.appendChild(w);
-  }
+  });
 }
 
 function renderSummary(){
@@ -587,19 +810,19 @@ function renderSummary(){
   });
 
   $('#grand-total').textContent = fmt(grand);
-  $('#grand-sub').textContent = `${state.travelers.length} נוסעים · ${state.days} ימים · ${state.dest==='usa'?'ארה"ב':'כל העולם'}` + (anyBlocked ? ' · חלק מהנוסעים דורשים מוקד' : '');
+  $('#grand-sub').textContent = `${companyName()} · ${state.travelers.length} נוסעים · ${state.days} ימים · ${state.dest==='usa'?'ארה"ב':'כל העולם'}` + (anyBlocked ? ' · שימו לב להערות' : '');
 }
 
 function buildQuoteText(){
   const destName = state.dest==='usa' ? 'ארה"ב' : 'כל העולם';
-  let out = `הערכת מחיר – ביטוח נסיעות לחו"ל (פספורטכארד)\n`;
+  let out = `הערכת מחיר – ביטוח נסיעות לחו"ל (${companyName()})\n`;
   out += `יעד: ${destName} | משך הנסיעה: ${state.days} ימים\n`;
   out += `——————————————\n`;
   let grand = 0;
   state.travelers.forEach((t,i) => {
     const r = calcTraveler(t);
     if(r.blocked){
-      out += `נוסע ${i+1} (גיל ${t.age}): תמחור דרך מוקד המכירות בלבד\n`;
+      out += `נוסע ${i+1} (גיל ${t.age}): נדרשת בדיקה מול הסוכן/המוקד\n`;
       return;
     }
     grand += r.total;
@@ -608,25 +831,59 @@ function buildQuoteText(){
   });
   out += `——————————————\n`;
   out += `סה"כ לכל הנוסעים: ${fmt(grand)}\n\n`;
-  out += `הערכה בלבד לפי תעריפון נובמבר 2025; המחיר הסופי נקבע ברכישה. הכיסוי כפוף לתנאי הפוליסה וחריגיה.\n`;
-  out += `משה ורנר, סוכן ביטוח מורשה · וואטסאפ 052-480-8787\n`;
-  out += `לרכישה אונליין: https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D`;
+  out += `הערכה בלבד לפי תעריפון ${state.company==='pc'?'פספורטכארד נובמבר 2025':'מגדל מסע עולמי מאי 2026'}; המחיר הסופי נקבע ברכישה ולפני תוספות רפואיות ככל שתיקבענה. הכיסוי כפוף לתנאי הפוליסה וחריגיה.\n`;
+  out += `משה ורנר, סוכן ביטוח מורשה · וואטסאפ 052-480-8787`;
+  if(state.company==='pc'){
+    out += `\nלרכישה אונליין: https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D`;
+  }
   return out;
 }
 
 /* ===== אירועים ===== */
+function setSeg(onBtn, offBtns){
+  onBtn.classList.add('on');
+  offBtns.forEach(b => b.classList.remove('on'));
+}
+
+$('#comp-pc').addEventListener('click', () => {
+  if(state.company==='pc') return;
+  state.company='pc';
+  setSeg($('#comp-pc'), [$('#comp-migdal')]);
+  resetTravelerExts(); render();
+});
+$('#comp-migdal').addEventListener('click', () => {
+  if(state.company==='migdal') return;
+  state.company='migdal';
+  setSeg($('#comp-migdal'), [$('#comp-pc')]);
+  resetTravelerExts(); render();
+});
+$('#plan-plat').addEventListener('click', () => {
+  if(state.plan==='plat') return;
+  state.plan='plat';
+  setSeg($('#plan-plat'), [$('#plan-lc')]);
+  resetTravelerExts(); render();
+});
+$('#plan-lc').addEventListener('click', () => {
+  if(state.plan==='lc') return;
+  state.plan='lc';
+  setSeg($('#plan-lc'), [$('#plan-plat')]);
+  resetTravelerExts(); render();
+});
+
 $('#days').addEventListener('input', e => {
   state.days = Math.max(1, parseInt(e.target.value)||1);
   renderSummary(); renderTripWarns();
 });
-$('#dest-world').addEventListener('click', () => { state.dest='world'; $('#dest-world').classList.add('on'); $('#dest-usa').classList.remove('on'); renderSummary(); });
-$('#dest-usa').addEventListener('click', () => { state.dest='usa'; $('#dest-usa').classList.add('on'); $('#dest-world').classList.remove('on'); renderSummary(); });
+$('#dest-world').addEventListener('click', () => { state.dest='world'; setSeg($('#dest-world'),[$('#dest-usa')]); renderSummary(); });
+$('#dest-usa').addEventListener('click', () => { state.dest='usa'; setSeg($('#dest-usa'),[$('#dest-world')]); renderSummary(); });
+
 $('#add-traveler').addEventListener('click', () => { state.travelers.push(newTraveler()); render(); });
 $('#clone-exts').addEventListener('click', () => {
   const src = state.travelers[0];
   state.travelers.forEach((t,i) => { if(i>0) t.ext = JSON.parse(JSON.stringify(src.ext)); });
   render();
 });
+
 $('#travelers').addEventListener('input', e => {
   const el = e.target;
   if(el.id && el.id.startsWith('age-')){
@@ -634,12 +891,28 @@ $('#travelers').addEventListener('input', e => {
     state.travelers[i].age = Math.max(0, parseInt(el.value)||0);
     refreshExtAvailability(i);
   }
+  if(el.dataset.extdays != null){
+    const i = parseInt(el.dataset.t);
+    const v = Math.max(1, Math.min(parseInt(el.value)||1, state.days));
+    state.travelers[i].ext[el.dataset.extdays] = v;
+    renderSummary();
+  }
 });
 $('#travelers').addEventListener('change', e => {
   const el = e.target;
   if(el.dataset.ext != null){
     const i = parseInt(el.dataset.t);
-    state.travelers[i].ext[el.dataset.ext] = el.type==='checkbox' ? el.checked : el.value;
+    const id = el.dataset.ext;
+    if(el.type==='checkbox'){
+      if(el.dataset.exttype==='checkdays'){
+        state.travelers[i].ext[id] = el.checked ? state.days : false;
+        renderTravelers(); // מציג/מסתיר את שדה הימים
+      } else {
+        state.travelers[i].ext[id] = el.checked;
+      }
+    } else {
+      state.travelers[i].ext[id] = el.value;
+    }
     renderSummary();
   }
 });
@@ -650,14 +923,15 @@ $('#travelers').addEventListener('click', e => {
 
 function refreshExtAvailability(i){
   const t = state.travelers[i];
-  EXT_DEFS.forEach(def => {
+  currentExtDefs().forEach(def => {
     const eligible = extEligible(def, t.age);
-    const input = document.getElementById((def.type==='check'?'ext-':'sel-')+i+'-'+def.id);
+    const isCheck = def.type==='check' || def.type==='checkdays';
+    const input = document.getElementById((isCheck?'ext-':'sel-')+i+'-'+def.id);
     if(!input) return;
     input.disabled = !eligible;
     input.closest('.ext').classList.toggle('disabled', !eligible);
     if(!eligible){
-      if(def.type==='check'){ input.checked=false; t.ext[def.id]=false; }
+      if(isCheck){ input.checked=false; t.ext[def.id]=false; }
       else { input.value=''; t.ext[def.id]=''; }
     }
   });
