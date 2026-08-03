@@ -19,8 +19,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Frank+Ruhl+Libre:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
---bg:#06211C;--bg2:#0a2922;--bg3:#0e352c;--gold:#D4B57A;--gold2:#C9A86A;--gold-dim:#B59A63;
---cream:#F2ECE0;--muted:#A8BAB3;--muted2:#7c918a;--line:rgba(212,181,122,.22);--line2:rgba(212,181,122,.42);
+--bg:#F8FAF9;--bg2:#EFF5F2;--bg3:#E4EEEA;--gold:#12876F;--gold2:#16A085;--gold-dim:#0D6B58;
+--cream:#123028;--muted:#51665F;--muted2:#89998F;--line:rgba(18,48,40,.12);--line2:rgba(18,48,40,.24);
 --sans:'Heebo',Arial,'Arimo',sans-serif;--serif:'Frank Ruhl Libre',Georgia,serif;--wrap:1180px;}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:auto}
@@ -34,12 +34,12 @@ img{max-width:100%;display:block}
 .btn{display:inline-flex;align-items:center;gap:8px;border-radius:3px;padding:13px 26px;font-size:14.5px;font-weight:700;font-family:var(--sans);cursor:pointer;border:1px solid transparent;transition:transform .12s ease,background .2s,color .2s;white-space:nowrap}
 .btn:hover{transform:translateY(-2px)}
 .btn svg{width:18px;height:18px;flex:none}
-.btn-gold,.btn-teal{background:var(--gold);color:#06211C}
+.btn-gold,.btn-teal{background:var(--gold);color:#fff}
 .btn-gold:hover,.btn-teal:hover{background:var(--gold2)}
 .btn-line{background:transparent;border-color:var(--line2);color:var(--gold)}
 .btn-line:hover{background:rgba(212,181,122,.1)}
 /* header */
-.site-head{position:sticky;top:0;z-index:60;background:#06211C;border-bottom:1px solid var(--line)}
+.site-head{position:sticky;top:0;z-index:60;background:rgba(248,250,249,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .head-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 34px;max-width:var(--wrap);margin:0 auto}
 .brand{display:flex;align-items:center;gap:11px}
 .brand img{width:42px;height:42px;object-fit:contain}
@@ -113,7 +113,7 @@ img{max-width:100%;display:block}
 .stars svg{width:16px;height:16px}
 .tcard p{font-size:15px;color:var(--muted);margin-bottom:16px;font-weight:300}
 .tperson{display:flex;align-items:center;gap:10px}
-.avatar{width:38px;height:38px;border-radius:50%;background:var(--gold);color:#06211C;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
 .tperson .nm{font-size:13.5px;font-weight:500;color:var(--cream)}
 /* faq */
 .faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
@@ -147,7 +147,7 @@ img{max-width:100%;display:block}
 .pill svg{width:15px;height:15px;color:var(--gold)}
 .hero-trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
 /* footer */
-.site-foot{background:#04161300;background:#041513;color:var(--muted);padding:48px 0 26px;border-top:1px solid var(--line)}
+.site-foot{background:#EBF2EF;color:var(--muted);padding:48px 0 26px;border-top:1px solid var(--line)}
 .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:34px}
 .foot-brand{display:flex;align-items:center;gap:11px;margin-bottom:14px}
 .foot-brand img{width:40px;height:40px;object-fit:contain}
@@ -183,21 +183,21 @@ img{max-width:100%;display:block}
 .legal{background:var(--bg2);border-top:1px solid var(--line);padding:20px 0}
 .legal p{max-width:var(--wrap);margin:0 auto;padding:0 34px;font-size:12px;color:var(--muted2);text-align:center;font-weight:300}
 /* skip + focus + a11y */
-.skip-link{position:absolute;right:-9999px;top:8px;background:var(--gold);color:#06211C;padding:10px 16px;border-radius:6px;z-index:200}
+.skip-link{position:absolute;right:-9999px;top:8px;background:var(--gold);color:#fff;padding:10px 16px;border-radius:6px;z-index:200}
 .skip-link:focus{right:12px}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;visibility:hidden;transition:opacity .28s;z-index:54}
 .nav-overlay.open{opacity:1;visibility:visible}
 .nav-close{display:none;background:none;border:none;font-size:32px;line-height:1;color:var(--gold);cursor:pointer;position:absolute;top:14px;inset-inline-start:16px;padding:2px 10px}
 @media(max-width:900px){.nav-close{display:block}}
-.a11y-btn{position:fixed;bottom:18px;inset-inline-start:18px;width:52px;height:52px;border-radius:50%;background:var(--gold);color:#06211C;border:none;cursor:pointer;z-index:120;box-shadow:0 6px 18px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center}
+.a11y-btn{position:fixed;bottom:18px;inset-inline-start:18px;width:52px;height:52px;border-radius:50%;background:var(--gold);color:#fff;border:none;cursor:pointer;z-index:120;box-shadow:0 6px 18px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center}
 .a11y-btn svg{width:28px;height:28px}
 .a11y-panel{position:fixed;bottom:80px;inset-inline-start:18px;width:235px;background:var(--bg3);border:1px solid var(--line2);border-radius:8px;box-shadow:0 12px 34px rgba(0,0,0,.4);padding:14px;z-index:120;display:none}
 .a11y-panel.open{display:block}
 .a11y-panel h4{font-size:15px;margin-bottom:10px;color:var(--gold)}
 .a11y-panel button{display:block;width:100%;text-align:start;background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:9px 12px;margin-bottom:7px;font-size:14px;font-family:var(--sans);color:var(--cream);cursor:pointer}
 .a11y-panel button:hover{background:#11392f}
-.a11y-panel .reset{background:var(--gold);color:#06211C;text-align:center;border-color:var(--gold)}
+.a11y-panel .reset{background:var(--gold);color:#fff;text-align:center;border-color:var(--gold)}
 html.a11y-contrast{filter:contrast(1.45)}
 html.a11y-gray{filter:grayscale(1)}
 html.a11y-contrast.a11y-gray{filter:contrast(1.45) grayscale(1)}
@@ -234,7 +234,7 @@ body{font-size:16px}
 .svc-num{font-size:28px;min-width:42px}
 .svc-row .t{font-size:18px}
 }
-@media(max-width:600px){.hero-actions{gap:10px}.hero-actions .btn{flex:1 1 calc(50% - 5px);justify-content:center;text-align:center}}</style>
+@media(max-width:600px){.hero-actions{gap:10px}.hero-actions .btn{flex:1 1 calc(50% - 5px);justify-content:center;text-align:center}}.acard{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 26px rgba(18,48,40,.07)}.acard:hover{box-shadow:0 16px 36px rgba(18,48,40,.11);transform:translateY(-2px)}.hero-mark{opacity:.42}.site-head{box-shadow:0 2px 14px rgba(18,48,40,.05)}.btn{border-radius:8px}.btn-gold,.btn-teal{background:var(--gold);color:#fff}.btn-gold:hover{background:var(--gold-dim)}.btn-line{border:1.5px solid var(--line2);color:var(--gold)}.pill,.hero-trust .pill{background:rgba(18,135,111,.09);color:var(--gold)}.svc-num{color:var(--gold)!important;opacity:.45}.trust{background:var(--bg2)}.a11y-btn{color:#fff!important}.site-foot a{color:var(--muted)}.site-foot a:hover{color:var(--gold)}</style>
 </head>
 <body>
 <a class="skip-link" href="#top">דלג לתוכן</a>
@@ -261,7 +261,7 @@ body{font-size:16px}
  <p class="lead">איך מגישים תביעה בצורה נכונה ומסודרת — והיכן אני נכנס לתמונה כדי שלא תצטרכו לעשות את זה לבד.</p>
 </div></section>
 <article class="art-body">
-<p>אף אחד לא אוהב להגיע לרגע הזה — אבל אם הגעתם אליו, חשוב לדעת שהגשת תביעה היא תהליך מסודר, ולרוב הרבה יותר פשוט ממה שנדמה. ריכזתי כאן את השלבים הכלליים שילוו אתכם, ואת הנקודה החשובה מכולן: אתם לא צריכים לעשות את זה לבד.</p><h2>השלבים להגשת תביעה</h2><div style="display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)"><span style="font-size:26px;font-weight:800;color:var(--gold-dim);min-width:44px;line-height:1.2">01</span><div style="flex:1"><div style="font-size:19px;font-weight:700;color:var(--cream);margin-bottom:4px">אספו את המסמכים הרלוונטיים</div><div style="font-size:15px;color:#cdd8d3;font-weight:300;line-height:1.7">בהתאם לסוג התביעה — מסמכים רפואיים, חשבוניות, אישורים, טופס תביעה של החברה וכל מסמך תומך. ככל שהתיק שלם ומסודר יותר, כך הטיפול מהיר יותר.</div></div></div><div style="display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)"><span style="font-size:26px;font-weight:800;color:var(--gold-dim);min-width:44px;line-height:1.2">02</span><div style="flex:1"><div style="font-size:19px;font-weight:700;color:var(--cream);margin-bottom:4px">מלאו את טופס התביעה</div><div style="font-size:15px;color:#cdd8d3;font-weight:300;line-height:1.7">לכל חברה יש טופס תביעה ייעודי לכל סוג ביטוח. חשוב למלא אותו במלואו ובכנות — פרטים חסרים או לא מדויקים הם הסיבה הנפוצה ביותר לעיכובים.</div></div></div><div style="display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)"><span style="font-size:26px;font-weight:800;color:var(--gold-dim);min-width:44px;line-height:1.2">03</span><div style="flex:1"><div style="font-size:19px;font-weight:700;color:var(--cream);margin-bottom:4px">הגישו את התביעה לחברת הביטוח</div><div style="font-size:15px;color:#cdd8d3;font-weight:300;line-height:1.7">הגשה מסודרת, עם כל הנספחים, ותיעוד של מה נשלח ומתי. שמרו עותק של כל מה שהגשתם.</div></div></div><div style="display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)"><span style="font-size:26px;font-weight:800;color:var(--gold-dim);min-width:44px;line-height:1.2">04</span><div style="flex:1"><div style="font-size:19px;font-weight:700;color:var(--cream);margin-bottom:4px">עקבו אחר הטיפול</div><div style="font-size:15px;color:#cdd8d3;font-weight:300;line-height:1.7">לתביעה יש לוחות זמנים שהחברה מחויבת אליהם. חשוב לעקוב, לוודא שהתקבלה, ולהיות זמינים אם מבקשים השלמות.</div></div></div><div style="display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)"><span style="font-size:26px;font-weight:800;color:var(--gold-dim);min-width:44px;line-height:1.2">05</span><div style="flex:1"><div style="font-size:19px;font-weight:700;color:var(--cream);margin-bottom:4px">קיבלתם החלטה — ומה עכשיו</div><div style="font-size:15px;color:#cdd8d3;font-weight:300;line-height:1.7">אם התביעה אושרה — מצוין. אם נדחתה או אושרה חלקית, יש לכם זכות לקבל הסבר, ולעיתים גם לערער או להשלים מידע. כאן במיוחד כדאי לא לוותר לבד.</div></div></div><div style="background:var(--bg2);border:1px solid var(--gold);border-radius:6px;padding:24px;margin:34px 0 10px;text-align:center"><h3 style="font-size:22px;font-weight:800;color:var(--cream);margin-bottom:8px">כאן אני נכנס לתמונה</h3><p style="color:var(--muted);font-weight:300;margin-bottom:16px;max-width:520px;margin-inline:auto">הגשת תביעה היא בדיוק הרגע שבו סוכן שמלווה אתכם עושה את ההבדל. אני אעזור לכם לאסוף את המסמכים הנכונים, להגיש נכון, לעקוב מול החברה — וללוות אתכם עד לסיום. אתם לא לבד בזה.</p><a href="https://wa.me/972524808787" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#06211C;border-radius:3px;padding:14px 30px;font-size:15px;font-weight:700;text-decoration:none">דברו איתי בוואטסאפ</a></div><div style="background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:18px 20px;margin-top:26px"><div style="font-size:12px;color:var(--muted2);line-height:1.7;font-weight:300"><strong style="color:var(--muted)">חשוב לדעת:</strong> המידע בעמוד זה כללי ומיועד להתמצאות ראשונית בלבד, ואינו מהווה ייעוץ או תחליף להוראות הפוליסה ולנהלי חברת הביטוח, הקובעים. תהליך התביעה ולוחות הזמנים משתנים בין חברות וסוגי ביטוח.</div></div>
+<p>אף אחד לא אוהב להגיע לרגע הזה — אבל אם הגעתם אליו, חשוב לדעת שהגשת תביעה היא תהליך מסודר, ולרוב הרבה יותר פשוט ממה שנדמה. ריכזתי כאן את השלבים הכלליים שילוו אתכם, ואת הנקודה החשובה מכולן: אתם לא צריכים לעשות את זה לבד.</p><h2>השלבים להגשת תביעה</h2><div style="display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)"><span style="font-size:26px;font-weight:800;color:var(--gold-dim);min-width:44px;line-height:1.2">01</span><div style="flex:1"><div style="font-size:19px;font-weight:700;color:var(--cream);margin-bottom:4px">אספו את המסמכים הרלוונטיים</div><div style="font-size:15px;color:#cdd8d3;font-weight:300;line-height:1.7">בהתאם לסוג התביעה — מסמכים רפואיים, חשבוניות, אישורים, טופס תביעה של החברה וכל מסמך תומך. ככל שהתיק שלם ומסודר יותר, כך הטיפול מהיר יותר.</div></div></div><div style="display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)"><span style="font-size:26px;font-weight:800;color:var(--gold-dim);min-width:44px;line-height:1.2">02</span><div style="flex:1"><div style="font-size:19px;font-weight:700;color:var(--cream);margin-bottom:4px">מלאו את טופס התביעה</div><div style="font-size:15px;color:#cdd8d3;font-weight:300;line-height:1.7">לכל חברה יש טופס תביעה ייעודי לכל סוג ביטוח. חשוב למלא אותו במלואו ובכנות — פרטים חסרים או לא מדויקים הם הסיבה הנפוצה ביותר לעיכובים.</div></div></div><div style="display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)"><span style="font-size:26px;font-weight:800;color:var(--gold-dim);min-width:44px;line-height:1.2">03</span><div style="flex:1"><div style="font-size:19px;font-weight:700;color:var(--cream);margin-bottom:4px">הגישו את התביעה לחברת הביטוח</div><div style="font-size:15px;color:#cdd8d3;font-weight:300;line-height:1.7">הגשה מסודרת, עם כל הנספחים, ותיעוד של מה נשלח ומתי. שמרו עותק של כל מה שהגשתם.</div></div></div><div style="display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)"><span style="font-size:26px;font-weight:800;color:var(--gold-dim);min-width:44px;line-height:1.2">04</span><div style="flex:1"><div style="font-size:19px;font-weight:700;color:var(--cream);margin-bottom:4px">עקבו אחר הטיפול</div><div style="font-size:15px;color:#cdd8d3;font-weight:300;line-height:1.7">לתביעה יש לוחות זמנים שהחברה מחויבת אליהם. חשוב לעקוב, לוודא שהתקבלה, ולהיות זמינים אם מבקשים השלמות.</div></div></div><div style="display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)"><span style="font-size:26px;font-weight:800;color:var(--gold-dim);min-width:44px;line-height:1.2">05</span><div style="flex:1"><div style="font-size:19px;font-weight:700;color:var(--cream);margin-bottom:4px">קיבלתם החלטה — ומה עכשיו</div><div style="font-size:15px;color:#cdd8d3;font-weight:300;line-height:1.7">אם התביעה אושרה — מצוין. אם נדחתה או אושרה חלקית, יש לכם זכות לקבל הסבר, ולעיתים גם לערער או להשלים מידע. כאן במיוחד כדאי לא לוותר לבד.</div></div></div><div style="background:var(--bg2);border:1px solid var(--gold);border-radius:6px;padding:24px;margin:34px 0 10px;text-align:center"><h3 style="font-size:22px;font-weight:800;color:var(--cream);margin-bottom:8px">כאן אני נכנס לתמונה</h3><p style="color:var(--muted);font-weight:300;margin-bottom:16px;max-width:520px;margin-inline:auto">הגשת תביעה היא בדיוק הרגע שבו סוכן שמלווה אתכם עושה את ההבדל. אני אעזור לכם לאסוף את המסמכים הנכונים, להגיש נכון, לעקוב מול החברה — וללוות אתכם עד לסיום. אתם לא לבד בזה.</p><a href="https://wa.me/972524808787" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border-radius:3px;padding:14px 30px;font-size:15px;font-weight:700;text-decoration:none">דברו איתי בוואטסאפ</a></div><div style="background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:18px 20px;margin-top:26px"><div style="font-size:12px;color:var(--muted2);line-height:1.7;font-weight:300"><strong style="color:var(--muted)">חשוב לדעת:</strong> המידע בעמוד זה כללי ומיועד להתמצאות ראשונית בלבד, ואינו מהווה ייעוץ או תחליף להוראות הפוליסה ולנהלי חברת הביטוח, הקובעים. תהליך התביעה ולוחות הזמנים משתנים בין חברות וסוגי ביטוח.</div></div>
 </article>
 <div class="legal"><p>האמור במאמר זה הוא מידע כללי בלבד, אינו מהווה ייעוץ או המלצה ואינו תחליף לייעוץ אישי המתחשב בנתוניו וצרכיו של כל אדם.</p></div>
 
