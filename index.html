@@ -435,7 +435,7 @@ body{font-size:16px}
    <div class="form-card">
     <div class="field"><label for="f-name">שם מלא</label><input id="f-name" type="text" placeholder="השם שלכם"></div>
     <div class="field"><label for="f-phone">טלפון</label><input id="f-phone" type="tel" placeholder="05X-XXXXXXX"></div>
-    <div class="field"><label for="f-subject">במה לעזור?</label><select id="f-subject"><option>ביטוח בריאות</option><option>ביטוח חיים</option><option>פנסיה ופרישה</option><option>חיסכון והשקעות</option><option>אחר</option></select></div>
+    <div class="field"><label for="f-subject">במה לעזור?</label><select id="f-subject"><option>ביטוח בריאות</option><option>ביטוח חיים</option><option>פנסיה ופרישה</option><option>חיסכון והשקעות</option><option>ביטוח נסיעות לחו״ל</option><option>אחר</option></select></div>
     <div class="field"><label for="f-msg">הודעה (אופציונלי)</label><textarea id="f-msg" placeholder="ספרו לי בקצרה..."></textarea></div>
     <button class="btn btn-gold" onclick="sendLead()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg> שלחו דרך וואטסאפ</button>
     <div class="form-note">הפרטים נשלחים ישירות אליי בוואטסאפ ולא נשמרים באתר.</div>
@@ -507,7 +507,7 @@ body{font-size:16px}
    var txt='שלום משה, הגעתי מהאתר.\nשם: '+nm+'\nטלפון: '+ph;
    if(sub)txt+='\nנושא: '+sub;
    if(msg.trim())txt+='\nהודעה: '+msg;
-   window.open('https://wa.me/972524808787?text='+encodeURIComponent(txt),'_blank');setTimeout(function(){window.location.href='thank-you.html';},600);
+   window.open('https://wa.me/972524808787?text='+encodeURIComponent(txt),'_blank');setTimeout(function(){window.location.href='/thank-you';},600);
  };
  (function(){var root=document.documentElement,bd=document.body;
   function L(k,d){try{return localStorage.getItem(k)||d}catch(e){return d}}
