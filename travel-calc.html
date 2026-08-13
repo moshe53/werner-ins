@@ -376,7 +376,7 @@ body.a11y-links a{text-decoration:underline !important;font-weight:700 !importan
       </div>
       <div class="summary-body">
         <div id="breakdown"></div>
-        <a class="buy-btn" id="buy-btn" href="https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D" target="_blank" rel="noopener">✈ לרכישת הביטוח אונליין »</a>
+        <a class="buy-btn" id="buy-btn" href="https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D" target="_blank" rel="noopener" onclick="return gtag_report_conversion(this.href);">✈ לרכישת הביטוח אונליין »</a>
         <button class="copy-btn" id="copy-quote" type="button">העתקת פירוט ההצעה</button>
         <div class="foot-note">
           המחיר המוצג הוא הערכה בלבד — לפי תעריפון פספורטכארד (נובמבר 2025) ותעריפון מגדל מסע עולמי (מאי 2026) — ואינו מהווה הצעת ביטוח מחייבת. המחיר הסופי נקבע בתהליך הרכישה, לפני תוספות רפואיות ככל שתיקבענה. הכיסוי כפוף לתנאי הפוליסה וחריגיה, וההצטרפות כפופה לחיתום רפואי. רכישת פספורטכארד מתבצעת באתר חיצוני; ייתכן שלמשה ורנר זיקה ו/או תגמול בגין רכישה דרך הקישור.
@@ -1202,5 +1202,19 @@ render();
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>
+/* Google Ads — purchase conversion (opens link in new tab AND fires conversion) */
+function gtag_report_conversion(url){
+  try{
+    gtag('event','conversion',{
+      'send_to':'AW-18324415786/9P94CMG3l-EcEKrK4aFE',
+      'value':1.0,
+      'currency':'ILS'
+    });
+  }catch(e){}
+  window.open(url,'_blank','noopener');
+  return false;
+}
+</script>
 </body>
 </html>
