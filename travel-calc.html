@@ -417,7 +417,7 @@ body.a11y-links a{text-decoration:underline !important;font-weight:700 !importan
 <script>
 /* ============================================================
    נתוני תעריפונים
-   פספורטכארד – נובמבר 2025 | מגדל מסע עולמי – מאי 2026 | הראל First Class – 12.2024
+   פספורטכארד – נובמבר 2025 | מגדל מסע עולמי – מאי 2026 | הראל First Class – 3.2026
    ============================================================ */
 
 /* ----- פספורטכארד: בסיס + תוספת ארה"ב ----- */
@@ -531,16 +531,16 @@ const MIGDAL_LC_EXTS = [
   {id:'mNoThird', label:'הסרת כיסוי צד ג\'', type:'check', hint:'הנחה של $0.20/יום'},
 ];
 
-/* ----- הראל First Class 12.2024: מדורג לפי ימים ----- */
+/* ----- הראל First Class 3.2026: מדורג לפי ימים ----- */
 const HAREL_RATES = [
-  {min:0,  max:50, r14:2.20, r15:2.50, u20:3.50,  u21:3.70,  maxDays:365},
-  {min:51, max:60, r14:2.20, r15:2.50, u20:3.50,  u21:3.70,  maxDays:180},
-  {min:61, max:65, r14:3.30, r15:3.30, u20:6.80,  u21:6.80,  maxDays:120},
-  {min:66, max:70, r14:4.25, r15:4.25, u20:9.70,  u21:9.70,  maxDays:120},
+  {min:0,  max:50, r14:2.50, r15:2.50, u20:3.50,  u21:3.70,  maxDays:365},
+  {min:51, max:60, r14:2.50, r15:2.80, u20:3.50,  u21:3.70,  maxDays:180},
+  {min:61, max:65, r14:3.80, r15:4.00, u20:6.80,  u21:6.80,  maxDays:120},
+  {min:66, max:70, r14:4.80, r15:5.10, u20:9.70,  u21:9.70,  maxDays:120},
   {min:71, max:75, r14:6.55, r15:6.55, u20:11.60, u21:11.60, maxDays:120},
   {min:76, max:80, r14:11.60,r15:11.60,u20:21.20, u21:21.20, maxDays:60},
   {min:81, max:85, r14:11.60,r15:11.60,u20:21.20, u21:21.20, maxDays:30},
-  {min:86, max:95, r14:17.20,r15:17.20,u20:32.50, u21:32.50, maxDays:30},
+  {min:86, max:95, r14:17.50,r15:17.50,u20:32.50, u21:32.50, maxDays:30},
 ];
 function harelCancelMed(age){ if(age<=17)return 0.65; if(age<=40)return 0.70; if(age<=60)return 1.00; if(age<=75)return 1.50; if(age<=85)return 2.80; return 4.20; }
 function harelCancelExt(age){ if(age<=17)return 0.90; if(age<=40)return 1.00; if(age<=50)return 1.70; if(age<=60)return 2.60; if(age<=75)return 3.80; if(age<=85)return 5.50; return 8.00; }
@@ -556,7 +556,7 @@ const HAREL_EXTS = [
   {id:'hSpecial', label:'כיסוי מיוחד בכבודה (עד $2,000)', type:'check', hint:'$1/יום'},
   {id:'hPreex', label:'החמרת מצב רפואי קודם', type:'check', hint:'לפי גיל · $3.35–$22 ליום'},
   {id:'hPregnancy', label:'הריון עד שבוע 32', type:'check', hint:'$5/יום (ארה"ב $10) · עד גיל 42', maxAge:42},
-  {id:'hWinter', label:'ספורט חורף', type:'check', hint:'$9/יום (76-80: $13.5) · עד גיל 80', maxAge:80},
+  {id:'hWinter', label:'ספורט חורף', type:'check', hint:'$9.5/יום (76-80: $13.5) · עד גיל 80', maxAge:80},
   {id:'hAdventure', label:'ספורט אתגרי חובבני', type:'check', hint:'$0.5/יום (76-85: $2)', maxAge:85},
   {id:'hLaptop', label:'גניבת מחשב נייד / טאבלט', type:'check', hint:'$2/יום'},
   {id:'hPhone', label:'גניבת טלפון נייד', type:'check', hint:'$1.6/יום'},
@@ -602,7 +602,7 @@ function calcHarel(t){
   else if(e.hCancel==='ext'){ const r=harelCancelExt(t.age); const a=r*days; lines.push({name:`ביטול/קיצור מורחב (${fmt(r)} ליום)`, amount:a}); total+=a; }
   if(e.hPreex){ const r=harelPreex(t.age); const a=r*days; lines.push({name:`החמרת מצב רפואי קודם (${fmt(r)} ליום)`, amount:a}); total+=a; }
   if(e.hPregnancy){ const r=state.dest==='usa'?10:5; const a=r*days; lines.push({name:`הריון עד שבוע 32 (${fmt(r)} ליום)`, amount:a}); total+=a; }
-  if(e.hWinter){ const r=t.age<=75?9:13.5; const a=r*days; lines.push({name:`ספורט חורף (${fmt(r)} ליום)`, amount:a}); total+=a; }
+  if(e.hWinter){ const r=t.age<=75?9.5:13.5; const a=r*days; lines.push({name:`ספורט חורף (${fmt(r)} ליום)`, amount:a}); total+=a; }
   if(e.hAdventure){ const r=t.age<=75?0.5:2; const a=r*days; lines.push({name:`ספורט אתגרי חובבני (${fmt(r)} ליום)`, amount:a}); total+=a; }
   if(e.hLaptop){ const a=2.00*days; lines.push({name:'גניבת מחשב/טאבלט ($2 ליום)', amount:a}); total+=a; }
   if(e.hPhone){ const a=1.60*days; lines.push({name:'גניבת טלפון נייד ($1.6 ליום)', amount:a}); total+=a; }
@@ -897,7 +897,7 @@ function renderChrome(){
   } else if(state.company==='harel'){
     brand.textContent = 'הראל';
     brand.style.background = '#1D70B7';
-    txt.textContent = 'First Class · לפי תעריפון 12.2024 · המחירים בדולר ארה"ב';
+    txt.textContent = 'First Class · לפי תעריפון 3.2026 · המחירים בדולר ארה"ב';
     const b = $('#buy-btn');
     b.textContent = '✈ לרכישת הביטוח בהראל אונליין »';
     b.href = 'https://digital.harel-group.co.il/travel-policy?guid=bee1d408-c6a7-410e-b4ee-ac690224bdd3&an=003758';
@@ -1036,7 +1036,7 @@ function buildQuoteText(){
   });
   out += `——————————————\n`;
   out += `סה"כ לכל הנוסעים: ${fmt(grand)}\n\n`;
-  out += `הערכה בלבד לפי תעריפון ${state.company==='pc'?'פספורטכארד נובמבר 2025':(state.company==='harel'?'הראל First Class 12.2024':'מגדל מסע עולמי מאי 2026')}; המחיר הסופי נקבע ברכישה ולפני תוספות רפואיות ככל שתיקבענה. הכיסוי כפוף לתנאי הפוליסה וחריגיה.\n`;
+  out += `הערכה בלבד לפי תעריפון ${state.company==='pc'?'פספורטכארד נובמבר 2025':(state.company==='harel'?'הראל First Class 3.2026':'מגדל מסע עולמי מאי 2026')}; המחיר הסופי נקבע ברכישה ולפני תוספות רפואיות ככל שתיקבענה. הכיסוי כפוף לתנאי הפוליסה וחריגיה.\n`;
   out += `משה ורנר, סוכן ביטוח מורשה · וואטסאפ 052-480-8787`;
   if(state.company==='pc'){
     out += `\nלרכישה אונליין: https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D`;
