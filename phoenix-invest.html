@@ -4,6 +4,24 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18324415786"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18324415786');</script>
+<!-- Event snippet for רכישה (1) conversion page -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.open(url, '_blank', 'noopener');
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18324415786/ghVhCICX5uscEKrK4aFE',
+      'value': 1.0,
+      'currency': 'ILS',
+      'transaction_id': '',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -649,7 +667,7 @@ body{font-size:16px}
 <script>
 // ==== מזהי המרה — למילוי ידני ====
 const CONV = {
-  purchase: 'AW-XXXXXXXXX/LABEL_PURCHASE',
+  purchase: 'AW-18324415786/ghVhCICX5uscEKrK4aFE', // בשימוש גם דרך gtag_report_conversion בראש הדף
   whatsapp: 'AW-XXXXXXXXX/LABEL_WHATSAPP',
   form:     'AW-XXXXXXXXX/LABEL_FORM'
 };
@@ -665,7 +683,6 @@ function trackConversion(type, ctaId, value){
 }
 // append current UTM params to the Phoenix purchase link, then open in new tab
 function fnxBuy(el, ctaId){
-  trackConversion('purchase', ctaId, 300);
   var url = el.getAttribute('href');
   try{
     var qs = window.location.search;
@@ -674,8 +691,7 @@ function fnxBuy(el, ctaId){
       if(utms.length){ url += (url.indexOf('?')===-1?'?':'&') + utms.join('&'); }
     }
   }catch(e){}
-  window.open(url,'_blank','noopener');
-  return false;
+  return gtag_report_conversion(url);
 }
 function waClick(ctaId){ trackConversion('whatsapp', ctaId, 400); return true; }
 </script>
