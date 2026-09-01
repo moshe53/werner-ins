@@ -235,7 +235,45 @@ body{font-size:16px}
 .svc-num{font-size:28px;min-width:42px}
 .svc-row .t{font-size:18px}
 }
-@media(max-width:600px){.hero-actions{gap:10px}.hero-actions .btn{flex:1 1 calc(50% - 5px);justify-content:center;text-align:center}}.acard{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 26px rgba(18,48,40,.07)}.acard:hover{box-shadow:0 16px 36px rgba(18,48,40,.11);transform:translateY(-2px)}.hero-mark{opacity:.42}.site-head{box-shadow:0 2px 14px rgba(18,48,40,.05)}.btn{border-radius:8px}.btn-gold,.btn-teal{background:var(--gold);color:#fff}.btn-gold:hover{background:var(--gold-dim)}.btn-line{border:1.5px solid var(--line2);color:var(--gold)}.pill,.hero-trust .pill{background:rgba(18,135,111,.09);color:var(--gold)}.svc-num{color:var(--gold)!important;opacity:.45}.trust{background:var(--bg2)}.a11y-btn{color:#fff!important}.site-foot a{color:var(--muted)}.site-foot a:hover{color:var(--gold)}</style>
+@media(max-width:600px){.hero-actions{gap:10px}.hero-actions .btn{flex:1 1 calc(50% - 5px);justify-content:center;text-align:center}}.acard{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 26px rgba(18,48,40,.07)}.acard:hover{box-shadow:0 16px 36px rgba(18,48,40,.11);transform:translateY(-2px)}.hero-mark{opacity:.42}.site-head{box-shadow:0 2px 14px rgba(18,48,40,.05)}.btn{border-radius:8px}.btn-gold,.btn-teal{background:var(--gold);color:#fff}.btn-gold:hover{background:var(--gold-dim)}.btn-line{border:1.5px solid var(--line2);color:var(--gold)}.pill,.hero-trust .pill{background:rgba(18,135,111,.09);color:var(--gold)}.svc-num{color:var(--gold)!important;opacity:.45}.trust{background:var(--bg2)}.a11y-btn{color:#fff!important}.site-foot a{color:var(--muted)}.site-foot a:hover{color:var(--gold)}
+/* ---- landing conversion components ---- */
+.trust-strip{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:center;margin:14px 0 4px;font-size:13px;color:var(--muted);font-weight:500}
+.trust-strip span{white-space:nowrap}
+.trust-strip span::before{content:"·";margin-inline-end:16px;color:var(--muted2)}
+.trust-strip span:first-child::before{content:"";margin:0}
+.cta-duo{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 8px}
+.cta-duo a{flex:1 1 240px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:5px;padding:15px 22px;font-size:16px;font-weight:700;text-decoration:none;text-align:center}
+.cta-fill{background:var(--gold);color:#fff}
+.cta-fill:hover{background:var(--gold-dim)}
+.cta-out{background:#fff;color:var(--gold);border:1.5px solid var(--gold)}
+.cta-micro{font-size:12.5px;color:var(--muted2);text-align:center;margin-bottom:8px}
+/* sticky mobile bar */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:70;display:none;background:#fff;border-top:1px solid var(--line2);box-shadow:0 -2px 12px rgba(18,48,40,.1)}
+.sticky-cta a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 8px;font-size:15px;font-weight:700;text-decoration:none}
+.sticky-cta .s-buy{background:var(--gold);color:#fff}
+.sticky-cta .s-wa{background:#fff;color:var(--gold)}
+.sticky-cta.show{display:flex}
+@media(min-width:768px){.sticky-cta{display:none!important}}
+/* lead form */
+.lead-form{background:#fff;border:1px solid var(--line);border-radius:10px;padding:26px 22px;margin:30px 0;box-shadow:0 3px 16px rgba(18,48,40,.06)}
+.lead-form h3{font-size:22px;margin-bottom:6px}
+.lead-form .lf-sub{color:var(--muted);font-size:15px;margin-bottom:20px}
+.lf-field{margin-bottom:15px}
+.lf-field label{display:block;font-size:14px;font-weight:700;margin-bottom:6px}
+.lf-field input,.lf-field select{width:100%;padding:12px 13px;border:1px solid var(--line2);border-radius:6px;font-family:var(--sans);font-size:16px;background:var(--bg);color:var(--cream)}
+.lf-field input:focus,.lf-field select:focus{outline:none;border-color:var(--gold)}
+.lead-form .btn-gold{width:100%;margin-top:6px}
+.lf-note{font-size:12.5px;color:var(--muted2);text-align:center;margin-top:12px}
+/* faq accordion */
+.faq-acc{margin:24px 0}
+.faq-acc details{background:#fff;border:1px solid var(--line);border-radius:6px;margin-bottom:10px;overflow:hidden}
+.faq-acc summary{padding:15px 18px;font-weight:700;font-size:15.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--cream)}
+.faq-acc summary::-webkit-details-marker{display:none}
+.faq-acc summary::after{content:"+";color:var(--gold);font-size:22px;font-weight:400}
+.faq-acc details[open] summary::after{content:"−"}
+.faq-acc .faq-body{padding:0 18px 16px;color:#2E4139;font-size:14.5px;line-height:1.7}
+.less-fit{background:var(--bg2);border-inline-start:3px solid var(--muted2);border-radius:4px;padding:14px 18px;margin:18px 0;font-size:14.5px;color:var(--muted);line-height:1.7}
+</style>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -325,6 +363,62 @@ body{font-size:16px}
  }
 }
 </script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "מה סכום המינימום לפתיחת פוליסה?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "בהפניקס אינווסט, סכום המינימום להפקדה חד-פעמית הוא 10,000 ₪. ניתן לפתוח גם בהפקדה חודשית שוטפת. סכומי המינימום עשויים להשתנות בין המסלולים."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "כמה זמן לוקח למשוך את הכסף?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "הכספים נזילים וניתנים למשיכה בכל עת, ללא קנסות פדיון. משיכה כרוכה בתשלום מס על הרווח בלבד."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "מה קורה אם ארצה לשנות מסלול השקעה?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "ניתן לעבור בין מסלולים, והמעבר עצמו אינו מהווה אירוע מס."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "האם זה מחליף פנסיה?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "לא. פוליסת חיסכון היא רובד נוסף לצד החיסכון הפנסיוני, לא תחליף לו."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "כמה זמן לוקח לפתוח את הפוליסה?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "התהליך הדיגיטלי באתר הפניקס אורך בדרך כלל מספר דקות."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "מה העלות של הליווי שלך?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "אין עלות. אני מתוגמל על ידי חברת הביטוח, כפי שמפורט בגילוי הנאות."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#top">דלג לתוכן</a>
@@ -337,7 +431,7 @@ body{font-size:16px}
   </a>
   <nav class="nav" id="nav"><button class="nav-close" id="navClose" aria-label="סגירת תפריט">&times;</button><a href="/#top">בית</a><a href="/#services">תחומים</a><a href="/#about">אודות</a><a href="/articles" class="active">מאמרים</a><a href="/calculators">מחשבונים</a><a href="/claims">הגשת תביעה</a><a href="/#faq">שאלות נפוצות</a><a href="/#contact">צור קשר</a></nav>
   <div class="nav-cta">
-   <a class="btn btn-line btn-wa-head" href="https://wa.me/972524808787" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.26l-.999 3.648 3.965-1.255zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg> וואטסאפ</a>
+   <a class="btn btn-gold btn-wa-head" href="https://wa.me/972524808787" target="_blank" rel="noopener" onclick="return waClick('cta-whatsapp-nav');"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.26l-.999 3.648 3.965-1.255zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg> וואטסאפ</a>
    <button class="nav-toggle" id="navToggle" aria-label="תפריט" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
   </div>
  </div>
@@ -345,17 +439,23 @@ body{font-size:16px}
 <div class="nav-overlay" id="navOverlay"></div>
 
 <section class="art-hero"><div class="wrap">
- <a class="art-back" href="/articles"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> חזרה למאמרים</a>
  <div class="cat">חיסכון והשקעות</div>
  <h1>פוליסת חיסכון והשקעה: הדרך לתת לכסף שלכם לעבוד</h1>
  <p class="lead">כסף שיושב בעו״ש או בפיקדון בנקאי לרוב לא מייצר תשואה משמעותית. פוליסת חיסכון והשקעה נותנת לכסף שלכם מסגרת מנוהלת, גמישה ונזילה — כדי שיעבוד עבורכם לאורך זמן.</p>
  <div class="meta">משה ורנר · כ-5 דקות קריאה · עודכן אוגוסט 2026</div>
+ <div class="trust-strip"><span>17 שנות ניסיון</span><span>סוכן ביטוח מורשה (L-00106229)</span><span>ליווי אישי ללא עלות</span><span>זמין בוואטסאפ</span></div>
 </div></section>
 <article class="art-body">
 
 <div style="background:var(--bg2);border-inline-start:3px solid var(--gold);border-radius:4px;padding:18px 20px;margin:6px 0 26px">
 <strong>התשובה בקצרה:</strong> פוליסת חיסכון והשקעה היא מכשיר פיננסי שמאפשר לחסוך לכל מטרה ולכל טווח, עם מגוון מסלולי השקעה, נזילות מלאה (משיכה בכל עת), ואפשרות לעבור בין מסלולים בלי אירוע מס. היא אינה פנסיה ואינה קופת גמל — אלא כלי חיסכון גמיש. הפניקס אינווסט היא אחת מפוליסות ההשקעה הבולטות בשוק.
 </div>
+
+<div class="cta-duo">
+ <a id="cta-purchase-hero" class="cta-fill" href="https://forms.fnx.co.il/fnx/redirector/?templatenumber=2000789&agent_number=33537" target="_blank" rel="noopener sponsored" onclick="return fnxBuy(this,'cta-purchase-hero');">לפתיחת פוליסה בהפניקס אינווסט »</a>
+ <a id="cta-whatsapp-hero" class="cta-out" href="https://wa.me/972524808787" target="_blank" rel="noopener" onclick="return waClick('cta-whatsapp-hero');">לא בטוחים? דברו איתי</a>
+</div>
+<div class="cta-micro">תהליך דיגיטלי מאובטח באתר הפניקס · כ-10 דקות · ליווי שלי ללא עלות</div>
 
 <h2>למה לא פשוט להשאיר את הכסף בבנק?</h2>
 <p>הרבה אנשים משאירים חסכונות בעו״ש או בפיקדון בנקאי, מתוך תחושה שזה ״בטוח״. הבעיה: כסף שיושב בצד לרוב <strong>מאבד מערכו</strong> מול האינפלציה, ובפיקדונות רבים הריבית נמוכה. מעבר לכך, פיקדון בנקאי כרוך פעמים רבות בסגירת הכסף לתקופה — במהלכה לא ניתן למשוך אותו בלי קנס.</p>
@@ -373,6 +473,16 @@ body{font-size:16px}
 <li style="margin-bottom:10px"><strong>הלוואה כנגד החיסכון:</strong> ניתן לרוב לקבל הלוואה כנגד הכספים הצבורים, בתנאים נוחים וללא צורך בביטחונות נוספים.</li>
 </ul>
 
+<h2>דמי הניהול בהפניקס אינווסט</h2>
+<p>בהפניקס אינווסט <strong>אין דמי ניהול מהפקדה (מפרמיה)</strong> — דמי הניהול נגבים מהצבירה בלבד, ופוחתים ככל שהצבירה גדלה. הטבלה מציגה את דמי הניהול השנתיים מהצבירה, לפי גובה הצבירה המועברת וסוג המסלול:</p>
+<div style="overflow-x:auto;margin:18px 0">
+<table style="width:100%;border-collapse:collapse;font-size:14.5px;min-width:520px">
+<thead><tr><th style="padding:11px 12px;text-align:right;background:var(--bg3);border:1px solid var(--line);font-weight:700;color:var(--cream)">צבירה מועברת</th><th style="padding:11px 12px;text-align:center;background:var(--bg2);border:1px solid var(--line);font-weight:700;color:var(--cream)">מסלולי הפניקס</th><th style="padding:11px 12px;text-align:center;background:var(--bg2);border:1px solid var(--line);font-weight:700;color:var(--cream)">Apollo</th><th style="padding:11px 12px;text-align:center;background:var(--bg2);border:1px solid var(--line);font-weight:700;color:var(--cream)">BlackRock</th></tr></thead>
+<tbody><tr><td style="padding:11px 12px;text-align:right;border:1px solid var(--line);font-weight:700;color:var(--cream)">50K–150K</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">1.00%</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">1.20%</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">1.55%</td></tr><tr><td style="padding:11px 12px;text-align:right;border:1px solid var(--line);font-weight:700;color:var(--cream)">150K–300K</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">0.90%</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">1.15%</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">1.45%</td></tr><tr><td style="padding:11px 12px;text-align:right;border:1px solid var(--line);font-weight:700;color:var(--cream)">300K–650K</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">0.85%</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">1.10%</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">1.40%</td></tr><tr><td style="padding:11px 12px;text-align:right;border:1px solid var(--line);font-weight:700;color:var(--cream)">650K–1,500K</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">0.80%</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">1.00%</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">1.35%</td></tr><tr><td style="padding:11px 12px;text-align:right;border:1px solid var(--line);font-weight:700;color:var(--cream)">מעל 1,500K</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">0.75%</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">1.00%</td><td style="padding:11px 12px;text-align:center;border:1px solid var(--line);font-weight:800;color:var(--gold)">1.30%</td></tr></tbody>
+</table>
+</div>
+<p style="font-size:13px;color:var(--muted);line-height:1.7">הנתונים מוצגים בכפוף לבדיקה ואימות, ט.ל.ח. דמי הניהול המחייבים הם אלה שבפוליסה ובהתאם למסלול הנבחר ולתנאי החברה. דמי ניהול נגבים מהצבירה בלבד (אין דמי ניהול מהפקדה).</p>
+
 <h2>הפניקס אינווסט — פוליסת ההשקעה של הפניקס</h2>
 <p>הפניקס אינווסט היא פוליסת השקעה המאפשרת לחסוך לכל מטרה ולכל טווח זמן. השקעת הכספים מתבצעת באחד ממגוון מסלולי השקעה המנוהלים על ידי מומחי ההשקעות של הפניקס, בגיבוי מחלקת מחקר.</p>
 <p>בין מסלולי ההשקעה נכללים גם מסלולי אירוח בשיתוף פעולה עם גופים בין-לאומיים: <strong>הפניקס BlackRock</strong> (בניהול מנהל הנכסים הגדול בעולם) ו<strong>הפניקס Apollo</strong>. כל המסלולים נגישים במקום אחד, בתוך אותה פוליסה, וניתן לעבור ביניהם.</p>
@@ -382,12 +492,16 @@ body{font-size:16px}
 <div class="eyebrow" style="color:var(--gold)">רכישה עצמאית אונליין</div>
 <h3 style="font-size:23px;margin:8px 0 8px;color:var(--cream)">מעוניינים לפתוח פוליסת חיסכון בהפניקס אינווסט?</h3>
 <p style="color:var(--muted);font-size:15px;margin:0 auto 22px;max-width:520px">ניתן להתחיל בתהליך רכישה עצמאי ומאובטח ישירות באתר הפניקס. אני כמובן זמין לכל שאלה או התייעצות לפני שמתחילים.</p>
-<a href="https://forms.fnx.co.il/fnx/redirector/?templatenumber=2000789&agent_number=33537" target="_blank" rel="noopener sponsored" onclick="return fnxConv(this.href);" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#fff;border-radius:4px;padding:15px 32px;font-size:16px;font-weight:700;text-decoration:none">להתחלת רכישה בהפניקס אינווסט »</a>
-<div style="font-size:12.5px;color:var(--muted2);margin-top:14px">הרכישה מתבצעת באתר הפניקס. לחלופין — <a href="https://wa.me/972524808787" style="color:var(--gold);font-weight:700">דברו איתי בוואטסאפ</a> ואלווה אתכם בתהליך.</div>
+<div class="cta-duo" style="max-width:520px;margin:0 auto">
+ <a id="cta-purchase-mid" class="cta-fill" href="https://forms.fnx.co.il/fnx/redirector/?templatenumber=2000789&agent_number=33537" target="_blank" rel="noopener sponsored" onclick="return fnxBuy(this,'cta-purchase-mid');">להתחלת רכישה בהפניקס אינווסט »</a>
+ <a id="cta-whatsapp-mid" class="cta-out" href="https://wa.me/972524808787" target="_blank" rel="noopener" onclick="return waClick('cta-whatsapp-mid');">דברו איתי בוואטסאפ</a>
+</div>
+<div style="font-size:12.5px;color:var(--muted2);margin-top:14px">הרכישה מתבצעת באתר הפניקס ובאחריותה. אני זמין ללוות אתכם בתהליך ללא עלות.</div>
 </div>
 
 <h2>למי זה מתאים?</h2>
 <p>פוליסת חיסכון והשקעה מתאימה למי שיש לו סכום פנוי (חד-פעמי או הפקדה חודשית) שאינו זקוק לו באופן מיידי, ורוצה לתת לו לעבוד במסגרת מנוהלת ונזילה — במקום להשאירו בעו״ש. היא מתאימה גם כרובד חיסכון נוסף לצד הפנסיה, לא במקומה.</p>
+<div class="less-fit"><strong>למי זה פחות מתאים:</strong> למי שצפוי להזדקק לכסף בתוך פחות משנה, למי שאין לו קרן חירום נזילה, ולמי שמחפש תשואה מובטחת — פוליסת השקעה חשופה לתנודות שוק.</div>
 
 <h2>מה חשוב לבדוק לפני שמתחילים</h2>
 <ul style="margin:0 0 18px;padding-inline-start:22px">
@@ -397,6 +511,41 @@ body{font-size:16px}
 </ul>
 <p>כאן בדיוק נכנס הליווי האישי — כדי להתאים את המסלול והסכום לצרכים שלכם, ולא לבחור ״על עיוור״.</p>
 
+<h2>שאלות נפוצות</h2>
+<div class="faq-acc">
+ <details><summary>מה סכום המינימום לפתיחת פוליסה?</summary><div class="faq-body">בהפניקס אינווסט, סכום המינימום להפקדה חד-פעמית הוא 10,000 ₪. ניתן לפתוח גם בהפקדה חודשית שוטפת. סכומי המינימום עשויים להשתנות בין המסלולים — אשמח לבדוק מה רלוונטי עבורכם.</div></details>
+ <details><summary>כמה זמן לוקח למשוך את הכסף?</summary><div class="faq-body">הכספים נזילים וניתנים למשיכה בכל עת, ללא קנסות פדיון. משיכה כרוכה בתשלום מס על הרווח בלבד.</div></details>
+ <details><summary>מה קורה אם ארצה לשנות מסלול השקעה?</summary><div class="faq-body">ניתן לעבור בין מסלולים, והמעבר עצמו אינו מהווה אירוע מס.</div></details>
+ <details><summary>האם זה מחליף פנסיה?</summary><div class="faq-body">לא. פוליסת חיסכון היא רובד נוסף לצד החיסכון הפנסיוני, לא תחליף לו.</div></details>
+ <details><summary>כמה זמן לוקח לפתוח את הפוליסה?</summary><div class="faq-body">התהליך הדיגיטלי באתר הפניקס אורך בדרך כלל מספר דקות.</div></details>
+ <details><summary>מה העלות של הליווי שלך?</summary><div class="faq-body">אין עלות. אני מתוגמל על ידי חברת הביטוח, כפי שמפורט בגילוי הנאות.</div></details>
+</div>
+
+<div class="lead-form" id="lead">
+ <h3>רוצים שאתאים לכם מסלול לפני שאתם פותחים?</h3>
+ <p class="lf-sub">מלאו 3 שדות ואחזור אליכם עם המלצה. בלי עלות, בלי התחייבות.</p>
+ <div class="lf-field"><label for="lf-name">שם מלא</label><input type="text" id="lf-name" placeholder="השם שלכם"></div>
+ <div class="lf-field"><label for="lf-phone">טלפון</label><input type="tel" id="lf-phone" placeholder="05X-XXXXXXX"></div>
+ <div class="lf-field"><label for="lf-amount">סכום משוער</label><select id="lf-amount">
+  <option value="">בחרו סכום…</option>
+  <option>עד 50,000 ₪</option>
+  <option>50–200 אלף ₪</option>
+  <option>200–500 אלף ₪</option>
+  <option>מעל 500 אלף ₪</option>
+  <option>הפקדה חודשית שוטפת</option>
+ </select></div>
+ <div class="lf-field"><label for="lf-goal">מטרת החיסכון</label><select id="lf-goal">
+  <option value="">בחרו מטרה…</option>
+  <option>חיסכון כללי</option>
+  <option>חיסכון לילדים</option>
+  <option>כספי פיצויים או ירושה</option>
+  <option>לקראת פרישה</option>
+  <option>אחר</option>
+ </select></div>
+ <button id="lead-form-submit" class="btn btn-gold" onclick="submitLead()">שלחו לי המלצה</button>
+ <div class="lf-note">הפרטים נשלחים ישירות אליי בוואטסאפ. לא מועברים לצד שלישי.</div>
+</div>
+
 <div style="background:var(--bg3);border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin:26px 0;font-size:13px;color:var(--muted);line-height:1.7">
 <strong>גילוי נאות:</strong> האמור הוא מידע כללי ושיווקי בלבד ואינו מהווה ייעוץ פנסיוני, ייעוץ השקעות או המלצה לרכישת מוצר פיננסי, ואינו תחליף להתאמה אישית. הפניקס אינווסט היא מוצר של הפניקס חברה לביטוח בע״מ; פרטי המוצר, מסלולי ההשקעה, דמי הניהול והתנאים המחייבים הם אלה שבפוליסה, בנהלי החברה ובהוראות הדין. התשואה אינה מובטחת, ותשואות עבר אינן מעידות על העתיד. משיכת כספים כרוכה בתשלום מס על הרווח. הרכישה מתבצעת באתר הפניקס ובאחריותה; ייתכן שלמשה ורנר זיקה ו/או תגמול בגין רכישה המתבצעת דרך קישור זה. משה ורנר — סוכן ביטוח מורשה (רישיון L-00106229), הפועל תחת בית הסוכן שחם-אורלן. עדכני לאוגוסט 2026.
 </div>
@@ -404,7 +553,7 @@ body{font-size:16px}
  <div class="art-cta">
   <h3>רוצים להתאים חיסכון למטרה שלכם?</h3>
   <p>בואו נעבור על זה יחד — נתאים מסלול, סכום וטווח. בלי התחייבות.</p>
-  <a class="btn btn-gold" href="https://wa.me/972524808787" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.26l-.999 3.648 3.965-1.255zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg> דברו איתי בוואטסאפ</a>
+  <a id="cta-whatsapp-footer" class="btn btn-gold" href="https://wa.me/972524808787" target="_blank" rel="noopener" onclick="return waClick('cta-whatsapp-footer');"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.26l-.999 3.648 3.965-1.255zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg> דברו איתי בוואטסאפ</a>
  </div>
 </article>
 <div class="legal"><p>האמור במאמר זה הוא מידע כללי בלבד, אינו מהווה ייעוץ או המלצה ואינו תחליף לייעוץ אישי המתחשב בנתוניו וצרכיו של כל אדם.</p></div>
@@ -497,10 +646,70 @@ body{font-size:16px}
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
-function fnxConv(url){
-  try{ gtag('event','conversion',{'send_to':'AW-18324415786/9P94CMG3l-EcEKrK4aFE','value':1.0,'currency':'ILS'}); }catch(e){}
+// ==== מזהי המרה — למילוי ידני ====
+const CONV = {
+  purchase: 'AW-XXXXXXXXX/LABEL_PURCHASE',
+  whatsapp: 'AW-XXXXXXXXX/LABEL_WHATSAPP',
+  form:     'AW-XXXXXXXXX/LABEL_FORM'
+};
+// =================================
+function trackConversion(type, ctaId, value){
+  var sendTo = CONV[type];
+  if(!sendTo || sendTo.indexOf('XXXX') !== -1){
+    console.log('[conversion pending]', type, ctaId, value, '— fill CONV.'+type);
+    return;
+  }
+  try{ gtag('event','conversion',{ send_to: sendTo, value: value, currency: 'ILS' }); }
+  catch(e){ console.log('gtag error', e); }
+}
+// append current UTM params to the Phoenix purchase link, then open in new tab
+function fnxBuy(el, ctaId){
+  trackConversion('purchase', ctaId, 300);
+  var url = el.getAttribute('href');
+  try{
+    var qs = window.location.search;
+    if(qs){
+      var utms = qs.substring(1).split('&').filter(function(p){return p.indexOf('utm_')===0;});
+      if(utms.length){ url += (url.indexOf('?')===-1?'?':'&') + utms.join('&'); }
+    }
+  }catch(e){}
   window.open(url,'_blank','noopener');
   return false;
+}
+function waClick(ctaId){ trackConversion('whatsapp', ctaId, 400); return true; }
+</script>
+<div class="sticky-cta" id="stickyBar">
+ <a id="cta-purchase-sticky" class="s-buy" href="https://forms.fnx.co.il/fnx/redirector/?templatenumber=2000789&agent_number=33537" target="_blank" rel="noopener sponsored" onclick="return fnxBuy(this,'cta-purchase-sticky');">פתיחת פוליסה</a>
+ <a id="cta-whatsapp-sticky" class="s-wa" href="https://wa.me/972524808787" target="_blank" rel="noopener" onclick="return waClick('cta-whatsapp-sticky');">וואטסאפ</a>
+</div>
+<script>
+// sticky bar: show on mobile after 25% scroll
+(function(){
+  var bar=document.getElementById('stickyBar');
+  if(!bar) return;
+  function onScroll(){
+    if(window.innerWidth>=768){ bar.classList.remove('show'); return; }
+    var sc=window.scrollY||document.documentElement.scrollTop;
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(h>0 && (sc/h)>0.25){ bar.classList.add('show'); } else { bar.classList.remove('show'); }
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  onScroll();
+})();
+// lead form -> whatsapp (same mechanism as dmei-nihul)
+function submitLead(){
+  var gv=function(id){var e=document.getElementById(id);return e?e.value:'';};
+  var nm=gv('lf-name').trim(), ph=gv('lf-phone').trim();
+  if(!nm||!ph){ alert('נא למלא שם וטלפון כדי שאוכל לחזור אליכם.'); return; }
+  var il=/^0(5\d|[2-489])-?\d{7}$/;
+  if(!il.test(ph.replace(/[-\s]/g,''))){ alert('נא להזין מספר טלפון ישראלי תקין.'); return; }
+  var amount=gv('lf-amount'), goal=gv('lf-goal');
+  var txt='שלום משה, הגעתי מדף הפניקס אינווסט.\nשם: '+nm+'\nטלפון: '+ph;
+  if(amount) txt+='\nסכום משוער: '+amount;
+  if(goal) txt+='\nמטרה: '+goal;
+  trackConversion('form','lead-form-submit',400);
+  window.open('https://wa.me/972524808787?text='+encodeURIComponent(txt),'_blank','noopener');
 }
 </script>
 </body></html>
