@@ -340,12 +340,12 @@ body.a11y-links a{text-decoration:underline !important;font-weight:700 !importan
   <div class="eyebrow">ביטוח נסיעות לחו"ל · מחשבון מחיר</div>
   <h1>כמה יעלה לכם <em>ביטוח הנסיעות?</em></h1>
   <p class="sub">בחרו חברת ביטוח, הזינו את גילאי הנוסעים, היעד, משך הנסיעה וההרחבות הרצויות — וקבלו הערכת מחיר מיידית.</p>
-  <div class="pc-chip" id="tariff-chip"><b id="chip-brand" style="background:var(--pc-red)">PassportCard</b> <span id="chip-text">לפי תעריפון נובמבר 2025 · נבדק לאחרונה אוגוסט 2026 · המחירים בדולר ארה"ב</span></div>
+  <div class="pc-chip" id="tariff-chip"><span id="chip-text">השוואת שלוש חברות · פספורטכארד, מגדל והראל · המחירים בדולר ארה"ב · נבדק אוגוסט 2026</span></div>
 </section>
 
 <main id="calc">
-  <section style="display:none" id="company-card-hidden">
-    <div class="card">
+  <section>
+    <div class="card" style="display:none">
       <h2>חברת הביטוח והמסלול</h2>
       <div class="row">
         <div class="field">
@@ -915,30 +915,8 @@ function companyName(){
 function render(){ renderTravelers(); renderSummary(); renderTripWarns(); renderChrome(); }
 
 function renderChrome(){
-  $('#plan-field').style.display = state.company==='migdal' ? '' : 'none';
-  const brand = $('#chip-brand'), txt = $('#chip-text');
-  if(state.company==='pc'){
-    brand.textContent = 'PassportCard';
-    brand.style.background = 'var(--pc-red)';
-    txt.textContent = 'לפי תעריפון נובמבר 2025 · המחירים בדולר ארה"ב';
-    const b = $('#buy-btn');
-    b.textContent = '✈ לרכישת הביטוח אונליין »';
-    b.href = 'https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D';
-  } else if(state.company==='harel'){
-    brand.textContent = 'הראל';
-    brand.style.background = '#1D70B7';
-    txt.textContent = 'First Class · לפי תעריפון 3.2026 · המחירים בדולר ארה"ב';
-    const b = $('#buy-btn');
-    b.textContent = '✈ לרכישת הביטוח בהראל אונליין »';
-    b.href = 'https://digital.harel-group.co.il/travel-policy?guid=bee1d408-c6a7-410e-b4ee-ac690224bdd3&an=003758';
-  } else {
-    brand.textContent = 'מגדל';
-    brand.style.background = 'var(--migdal-blue)';
-    txt.textContent = 'מסע עולמי · לפי תעריפון מאי 2026 · המחירים בדולר ארה"ב';
-    const b = $('#buy-btn');
-    b.textContent = '✆ לרכישת הפוליסה – דברו איתי בוואטסאפ »';
-    b.href = 'https://wa.me/972524808787?text=' + encodeURIComponent('שלום משה, חישבתי מחיר לביטוח נסיעות של מגדל באתר ואשמח לסגור פוליסה');
-  }
+  var pf = $('#plan-field'); if(pf) pf.style.display = 'none';
+  // הבאנר וכפתור הרכישה הישן אינם בשימוש במצב ההשוואה — אין צורך לעדכן אותם
 }
 
 function extEligible(def, age){
