@@ -200,7 +200,32 @@ footer{border-top:1px solid var(--line);background:#EBF2EF;margin-top:20px}
 html.a11y-contrast{filter:contrast(1.45)}
 html.a11y-gray{filter:grayscale(1)}
 html.a11y-contrast.a11y-gray{filter:contrast(1.45) grayscale(1)}
-body.a11y-links a{text-decoration:underline !important;font-weight:700 !important}</style>
+body.a11y-links a{text-decoration:underline !important;font-weight:700 !important}
+/* ---- 3-company comparison ---- */
+#compare-zone{margin-top:16px}
+.compare-btn{width:100%;padding:14px;background:var(--gold);color:#fff;border:none;border-radius:6px;font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer;transition:opacity .2s}
+.compare-btn:hover{opacity:.9}
+.cmp-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+.cmp-table th,.cmp-table td{padding:12px 10px;text-align:center;border-bottom:1px solid var(--line)}
+.cmp-table th{background:var(--surface2,#f0f4f2);font-weight:700;color:var(--cream,#123028)}
+.cmp-table .cmp-co{font-size:15px;font-weight:800}
+.cmp-table .cmp-price{font-size:20px;font-weight:800;color:var(--gold)}
+.cmp-table .cmp-best{position:relative}
+.cmp-table .cmp-best::after{content:"הזול ביותר";position:absolute;top:-8px;right:50%;transform:translateX(50%);background:var(--gold);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;white-space:nowrap}
+.cmp-note{font-size:12px;color:var(--muted,#51665F);margin-top:12px;line-height:1.6}
+.cmp-blocked{color:var(--muted2,#89998F);font-size:13px}
+.cmp-cta{display:block;margin-top:8px;padding:9px;border-radius:5px;font-size:13px;font-weight:700;text-decoration:none;text-align:center}
+
+.cmp-cats-title{font-size:13.5px;font-weight:700;color:var(--cream,#123028);margin:4px 0 10px}
+.cmp-cats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-bottom:14px}
+.cmp-cat{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--cream,#123028);cursor:pointer}
+.cmp-cat input{width:17px;height:17px;accent-color:var(--gold);flex:none}
+.cmp-notes{background:var(--surface2,#f0f4f2);border-radius:6px;padding:12px 14px;margin-top:14px}
+.cmp-notes-title{font-size:13px;font-weight:700;margin-bottom:7px;color:var(--cream,#123028)}
+.cmp-notes ul{margin:0;padding-inline-start:18px}
+.cmp-notes li{font-size:12.5px;color:var(--muted,#51665F);line-height:1.65;margin-bottom:6px}
+@media(max-width:520px){.cmp-cats-grid{grid-template-columns:1fr}}
+</style>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -319,7 +344,7 @@ body.a11y-links a{text-decoration:underline !important;font-weight:700 !importan
 </section>
 
 <main id="calc">
-  <section>
+  <section style="display:none" id="company-card-hidden">
     <div class="card">
       <h2>חברת הביטוח והמסלול</h2>
       <div class="row">
@@ -369,14 +394,21 @@ body.a11y-links a{text-decoration:underline !important;font-weight:700 !importan
 
   <aside class="summary">
     <div class="card">
-      <div class="summary-head">
+      <div class="summary-head" style="display:none">
         <div class="label">סה"כ מוערך</div>
         <div class="total" id="grand-total">$0</div>
         <div class="per" id="grand-sub"></div>
       </div>
       <div class="summary-body">
-        <div id="breakdown"></div>
-        <a class="buy-btn" id="buy-btn" href="https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D" target="_blank" rel="noopener" onclick="return gtag_report_conversion(this.href);">✈ לרכישת הביטוח אונליין »</a>
+        <div id="breakdown" style="display:none"></div>
+        <div id="compare-zone">
+          <h2 style="margin-bottom:4px">המחיר שלכם בשלוש החברות</h2>
+          <p style="font-size:13.5px;color:var(--muted,#51665F);margin-bottom:14px">הכיסוי הרפואי הבסיסי כלול תמיד. סמנו כיסויים נוספים להשוואה, ולחצו לקבלת המחירים.</p>
+          <div id="cmp-cats"></div>
+          <button type="button" id="compare-btn" class="compare-btn">⚖️ השוו מחיר בין שלוש החברות</button>
+          <div id="compare-results"></div>
+        </div>
+        <a class="buy-btn" id="buy-btn" style="display:none" href="https://buy.passportcard.co.il/?AffiliateId=I2O20ml9ImsOLJ%2BmF0u09Q%3D%3D" target="_blank" rel="noopener" onclick="return gtag_report_conversion(this.href);">✈ לרכישת הביטוח אונליין »</a>
         <button class="copy-btn" id="copy-quote" type="button">העתקת פירוט ההצעה</button>
         <div class="foot-note">
           המחיר המוצג הוא הערכה בלבד — לפי תעריפון פספורטכארד (נובמבר 2025) ותעריפון מגדל מסע עולמי (מאי 2026) — ואינו מהווה הצעת ביטוח מחייבת. המחיר הסופי נקבע בתהליך הרכישה, לפני תוספות רפואיות ככל שתיקבענה. הכיסוי כפוף לתנאי הפוליסה וחריגיה, וההצטרפות כפופה לחיתום רפואי. רכישת פספורטכארד מתבצעת באתר חיצוני; ייתכן שלמשה ורנר זיקה ו/או תגמול בגין רכישה דרך הקישור.
@@ -623,9 +655,7 @@ let state = {
 };
 
 function currentExtDefs(){
-  if(state.company === 'pc') return PC_EXTS;
-  if(state.company === 'harel') return HAREL_EXTS;
-  return state.plan === 'plat' ? MIGDAL_PLAT_EXTS : MIGDAL_LC_EXTS;
+  return [];
 }
 function newTraveler(age){
   const t = {age: age != null ? age : 30, ext: {}};
@@ -1181,40 +1211,116 @@ render();
 <a href="/accessibility" style="display:block;text-align:center;font-size:13px;margin-top:6px;color:var(--gold)">הצהרת נגישות</a>
 </div>
 <script>
-(function(){var root=document.documentElement,bd=document.body;
-  function L(k,d){try{return localStorage.getItem(k)||d}catch(e){return d}}
-  function S(k,v){try{localStorage.setItem(k,v)}catch(e){}}
-  var z=parseFloat(L('a11y_zoom','1'))||1; if(z!==1)root.style.zoom=z;
-  if(L('a11y_con','0')==='1')root.classList.add('a11y-contrast');
-  if(L('a11y_gry','0')==='1')root.classList.add('a11y-gray');
-  if(L('a11y_lnk','0')==='1')bd.classList.add('a11y-links');
-  var b=document.getElementById('a11yBtn'),p=document.getElementById('a11yPanel');
-  if(b)b.addEventListener('click',function(){var o=p.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});
-  function setZ(v){z=Math.min(1.6,Math.max(0.9,Math.round(v*10)/10));root.style.zoom=z;S('a11y_zoom',z);}
-  var g=function(id){return document.getElementById(id)};
-  if(g('a11yInc'))g('a11yInc').onclick=function(){setZ(z+0.1)};
-  if(g('a11yDec'))g('a11yDec').onclick=function(){setZ(z-0.1)};
-  if(g('a11yCon'))g('a11yCon').onclick=function(){var o=root.classList.toggle('a11y-contrast');S('a11y_con',o?'1':'0')};
-  if(g('a11yGry'))g('a11yGry').onclick=function(){var o=root.classList.toggle('a11y-gray');S('a11y_gry',o?'1':'0')};
-  if(g('a11yLnk'))g('a11yLnk').onclick=function(){var o=bd.classList.toggle('a11y-links');S('a11y_lnk',o?'1':'0')};
-  if(g('a11yRst'))g('a11yRst').onclick=function(){setZ(1);root.classList.remove('a11y-contrast','a11y-gray');bd.classList.remove('a11y-links');S('a11y_con','0');S('a11y_gry','0');S('a11y_lnk','0');};
- })();
-</script>
-<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
-<script defer src="/_vercel/insights/script.js"></script>
-<script>
-/* Google Ads — purchase conversion (opens link in new tab AND fires conversion) */
-function gtag_report_conversion(url){
-  try{
-    gtag('event','conversion',{
-      'send_to':'AW-18324415786/9P94CMG3l-EcEKrK4aFE',
-      'value':1.0,
-      'currency':'ILS'
+
+
+/* ===== השוואת שלוש חברות לפי קטגוריות כיסוי ===== */
+(function(){
+  // קטגוריה משותפת -> המזהה בכל חברה, והערת הבדלים
+  var CATS = [
+    {key:'cancel',   label:'ביטול וקיצור נסיעה',            ids:{pc:'cancel',      migdal:'mCancel',      harel:'hCancel'},   note:'תקרות ותנאי ביטול שונים בין החברות. פספורטכארד עד כ-8,000 דולר לפי מסלול; מגדל עד כ-6,000 דולר; הראל עד כ-10,000 דולר בהרחבה המורחבת.'},
+    {key:'baggage',  label:'כבודה',                         ids:{pc:'baggage',     migdal:'mBaggage',     harel:'hBaggage'},  note:'תקרות והשתתפות עצמית שונות. פספורטכארד ומגדל עד כ-2,500 דולר; הראל עד כ-2,250 דולר.'},
+    {key:'preex',    label:'החמרת מצב רפואי קיים',           ids:{pc:'preexisting', migdal:'mPreexisting', harel:'hPreex'},    note:'כפוף להצהרת בריאות וחיתום בכל החברות. בפספורטכארד קיימת גם הרחבה נפרדת למצב רפואי מיוחד. תקרת הגיל ומשך הכיסוי משתנים.'},
+    {key:'preg',     label:'הריון',                         ids:{pc:'pregnancy',   migdal:'mPregnancy',   harel:'hPregnancy'},note:'הרחבה עד שבוע 32. תקרת הכיסוי שונה: הראל עד כ-350,000 דולר, מגדל עד כ-200,000 דולר, פספורטכארד עד כ-250,000 דולר.'},
+    {key:'winter',   label:'ספורט חורף',                    ids:{pc:'winter',      migdal:'mWinter',      harel:'hWinter'},   note:'כיסוי לספורט חורף בכפוף לתנאי כל פוליסה.'},
+    {key:'adventure',label:'ספורט אתגרי',                   ids:{pc:'adventure',   migdal:'mAdventure',   harel:'hAdventure'},note:'הגדרת הפעילויות המכוסות משתנה בין החברות.'},
+    {key:'phone',    label:'גניבת טלפון נייד',              ids:{pc:'phone',       migdal:'mPhone',       harel:'hPhone'},    note:'תקרות שונות. במגדל הכיסוי כולל גם התקן ניווט.'},
+    {key:'laptop',   label:'גניבת מחשב נייד או טאבלט',       ids:{pc:'laptop',      migdal:'mLaptop',      harel:'hLaptop'},   note:'תקרות שונות בין החברות.'},
+    {key:'rental',   label:'ביטול השתתפות עצמית ברכב שכור',  ids:{pc:'rental',      migdal:'mRental',      harel:'hRental'},   note:'תקרת הכיסוי שונה: מגדל עד כ-1,500 דולר; הראל עד כ-6,000 דולר לפי הרחבה.'},
+    {key:'noSearch', label:'הסרת כיסוי איתור, חיפוש וחילוץ', ids:{pc:'noSearch',    migdal:'mNoSearch',    harel:'hNoSearch'}, note:'סימון קטגוריה זו מסיר את הכיסוי ומפחית מהמחיר, בכל החברות שבהן הוא כלול כברירת מחדל.'}
+  ];
+
+  // בונה אובייקט הרחבות לחברה מסוימת מתוך הקטגוריות המסומנות
+  function extFor(company, checked){
+    var ext = {};
+    CATS.forEach(function(c){
+      if(checked[c.key]){
+        var id = c.ids[company];
+        if(id) ext[id] = true;
+      }
     });
-  }catch(e){}
-  window.open(url,'_blank','noopener');
-  return false;
-}
+    return ext;
+  }
+
+  function totalFor(company, plan, checked){
+    var sc=state.company, sp=state.plan;
+    state.company=company; if(plan) state.plan=plan;
+    var total=0, blocked=false, warn='';
+    for(var i=0;i<state.travelers.length;i++){
+      var t = state.travelers[i];
+      var bt = { age:t.age, ext: extFor(company, checked) };
+      var r;
+      try{
+        r = company==='harel'?calcHarel(bt):company==='migdal'?calcMigdal(bt):calcPC(bt);
+      }catch(e){ r={total:0,blocked:true,warns:['שגיאת חישוב']}; }
+      if(r.blocked){ blocked=true; if(r.warns&&r.warns[0]) warn=r.warns[0]; }
+      total += r.total||0;
+    }
+    state.company=sc; state.plan=sp;
+    return {total:total, blocked:blocked, warn:warn};
+  }
+
+  function getChecked(){
+    var checked = {};
+    CATS.forEach(function(c){
+      var el = document.getElementById('cmp-'+c.key);
+      checked[c.key] = !!(el && el.checked);
+    });
+    return checked;
+  }
+
+  function runCompare(){
+    var box = document.getElementById('compare-results');
+    if(!state.travelers.length){ box.innerHTML = '<div class="cmp-note">הוסיפו לפחות נוסע אחד כדי להשוות.</div>'; return; }
+    var checked = getChecked();
+    var results = [
+      {key:'pc',     name:'פספורטכארד',      r: totalFor('pc',     null,   checked)},
+      {key:'migdal', name:'מגדל (פלטינום)',  r: totalFor('migdal', 'plat', checked)},
+      {key:'harel',  name:'הראל',            r: totalFor('harel',  null,   checked)}
+    ];
+    var minTotal = Infinity;
+    results.forEach(function(x){ if(!x.r.blocked && x.r.total>0 && x.r.total<minTotal) minTotal=x.r.total; });
+
+    var html = '<table class="cmp-table"><thead><tr>';
+    results.forEach(function(x){ html += '<th class="cmp-co">'+x.name+'</th>'; });
+    html += '</tr></thead><tbody><tr>';
+    results.forEach(function(x){
+      if(x.r.blocked || x.r.total<=0){
+        html += '<td><span class="cmp-blocked">'+(x.r.warn||'לא ניתן לתמחר אוטומטית')+'</span></td>';
+      } else {
+        var best = (x.r.total===minTotal)?' cmp-best':'';
+        html += '<td class="cmp-price'+best+'">'+fmt(x.r.total)+'</td>';
+      }
+    });
+    html += '</tr></tbody></table>';
+
+    // הערות על הקטגוריות שסומנו
+    var activeNotes = CATS.filter(function(c){ return checked[c.key]; });
+    if(activeNotes.length){
+      html += '<div class="cmp-notes"><div class="cmp-notes-title">שימו לב להבדלים בכיסויים שסימנתם:</div><ul>';
+      activeNotes.forEach(function(c){ html += '<li><strong>'+c.label+':</strong> '+c.note+'</li>'; });
+      html += '</ul></div>';
+    }
+    html += '<div class="cmp-note">המחירים כוללים את הכיסוי הבסיסי ואת הקטגוריות שסימנתם, לפי היעד, התאריכים והגילאים שהוזנו. הכיסויים, התקרות וההשתתפות העצמית נבדלים בין החברות כמפורט למעלה — ההשוואה נועדה להמחשה, והמחיר והתנאים המחייבים נקבעים ברכישה מול חברת הביטוח. ייתכנו הרחבות ייחודיות לכל חברה שאינן נכללות בהשוואה זו.</div>';
+    box.innerHTML = html;
+  }
+
+  // בונה את תיבות הסימון של הקטגוריות
+  function buildCatChecks(){
+    var wrap = document.getElementById('cmp-cats');
+    if(!wrap) return;
+    var html = '<div class="cmp-cats-title">בחרו כיסויים להשוואה (הכיסוי הרפואי הבסיסי כלול תמיד):</div><div class="cmp-cats-grid">';
+    CATS.forEach(function(c){
+      html += '<label class="cmp-cat"><input type="checkbox" id="cmp-'+c.key+'"> <span>'+c.label+'</span></label>';
+    });
+    html += '</div>';
+    wrap.innerHTML = html;
+  }
+
+  buildCatChecks();
+  var btn = document.getElementById('compare-btn');
+  if(btn) btn.addEventListener('click', runCompare);
+})();
+
 </script>
 </body>
 </html>
