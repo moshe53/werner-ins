@@ -1208,12 +1208,19 @@ render();
   ];
 
   // בונה אובייקט הרחבות לחברה מסוימת מתוך הקטגוריות המסומנות
+  // הרחבות שדורשות ערך מסוים (לא true/false)
+  var EXT_VALUES = {
+    cancel: { pc:'basic', harel:'med' },   // ביטול/קיצור: פספורטכארד='basic', הראל='med' (רפואי)
+    rental: { harel:'6000' }               // רכב שכור בהראל: התקרה הגבוהה
+  };
   function extFor(company, checked){
     var ext = {};
     CATS.forEach(function(c){
       if(checked[c.key]){
         var id = c.ids[company];
-        if(id) ext[id] = true;
+        if(!id) return;
+        var vmap = EXT_VALUES[c.key];
+        ext[id] = (vmap && vmap[company]) ? vmap[company] : true;
       }
     });
     return ext;
