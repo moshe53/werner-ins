@@ -403,8 +403,7 @@ body.a11y-links a{text-decoration:underline !important;font-weight:700 !importan
         <div id="breakdown" style="display:none"></div>
         <div id="compare-zone">
           <h2 style="margin-bottom:4px">המחיר שלכם בשלוש החברות</h2>
-          <p style="font-size:13.5px;color:var(--muted,#51665F);margin-bottom:14px">הכיסוי הרפואי הבסיסי כלול תמיד. סמנו כיסויים נוספים להשוואה, ולחצו לקבלת המחירים.</p>
-          <div id="cmp-cats"></div>
+          <p style="font-size:13.5px;color:var(--muted,#51665F);margin-bottom:14px">בחרו לכל נוסע את הכיסויים הרצויים (הכיסוי הרפואי הבסיסי כלול תמיד), ולחצו לקבלת המחירים.</p>
           <button type="button" id="compare-btn" class="compare-btn">⚖️ השוו מחיר בין שלוש החברות</button>
           <div id="compare-results"></div>
         </div>
@@ -654,8 +653,20 @@ let state = {
   travelers: [],
 };
 
+var COMPARE_CATS = [
+  {id:'cancel',    label:'ביטול וקיצור נסיעה',            type:'check', hint:'תקרות ותנאים משתנים בין החברות'},
+  {id:'baggage',   label:'כבודה',                         type:'check', hint:'עד כ-2,250–2,500 דולר לפי חברה'},
+  {id:'preex',     label:'החמרת מצב רפואי קיים',           type:'check', hint:'כפוף להצהרת בריאות וחיתום'},
+  {id:'preg',      label:'הריון',                         type:'check', hint:'הרחבה עד שבוע 32'},
+  {id:'winter',    label:'ספורט חורף',                    type:'check', hint:'כיסוי לפעילות ספורט חורף'},
+  {id:'adventure', label:'ספורט אתגרי',                   type:'check', hint:'הגדרת הפעילויות משתנה בין החברות'},
+  {id:'phone',     label:'גניבת טלפון נייד',              type:'check', hint:'תקרות שונות בין החברות'},
+  {id:'laptop',    label:'גניבת מחשב נייד או טאבלט',       type:'check', hint:'תקרות שונות בין החברות'},
+  {id:'rental',    label:'ביטול השתתפות עצמית ברכב שכור',  type:'check', hint:'תקרה משתנה בין החברות'},
+  {id:'noSearch',  label:'הסרת כיסוי איתור, חיפוש וחילוץ', type:'check', hint:'מסיר את הכיסוי ומפחית מהמחיר'}
+];
 function currentExtDefs(){
-  return [];
+  return COMPARE_CATS;
 }
 function newTraveler(age){
   const t = {age: age != null ? age : 30, ext: {}};
@@ -1213,10 +1224,11 @@ render();
     cancel: { pc:'basic', harel:'med' },   // ביטול/קיצור: פספורטכארד='basic', הראל='med' (רפואי)
     rental: { harel:'6000' }               // רכב שכור בהראל: התקרה הגבוהה
   };
-  function extFor(company, checked){
+  function extFor(company, travExt){
+    // travExt = t.ext of one traveler, keyed by category id (cancel/baggage/...)
     var ext = {};
     CATS.forEach(function(c){
-      if(checked[c.key]){
+      if(travExt && travExt[c.key]){
         var id = c.ids[company];
         if(!id) return;
         var vmap = EXT_VALUES[c.key];
@@ -1226,13 +1238,13 @@ render();
     return ext;
   }
 
-  function totalFor(company, plan, checked){
+  function totalFor(company, plan){
     var sc=state.company, sp=state.plan;
     state.company=company; if(plan) state.plan=plan;
     var total=0, blocked=false, warn='';
     for(var i=0;i<state.travelers.length;i++){
       var t = state.travelers[i];
-      var bt = { age:t.age, ext: extFor(company, checked) };
+      var bt = { age:t.age, ext: extFor(company, t.ext) };
       var r;
       try{
         r = company==='harel'?calcHarel(bt):company==='migdal'?calcMigdal(bt):calcPC(bt);
@@ -1244,23 +1256,13 @@ render();
     return {total:total, blocked:blocked, warn:warn};
   }
 
-  function getChecked(){
-    var checked = {};
-    CATS.forEach(function(c){
-      var el = document.getElementById('cmp-'+c.key);
-      checked[c.key] = !!(el && el.checked);
-    });
-    return checked;
-  }
-
   function runCompare(){
     var box = document.getElementById('compare-results');
     if(!state.travelers.length){ box.innerHTML = '<div class="cmp-note">הוסיפו לפחות נוסע אחד כדי להשוות.</div>'; return; }
-    var checked = getChecked();
     var results = [
-      {key:'pc',     name:'פספורטכארד',      r: totalFor('pc',     null,   checked)},
-      {key:'migdal', name:'מגדל (פלטינום)',  r: totalFor('migdal', 'plat', checked)},
-      {key:'harel',  name:'הראל',            r: totalFor('harel',  null,   checked)}
+      {key:'pc',     name:'פספורטכארד',      r: totalFor('pc',     null)},
+      {key:'migdal', name:'מגדל (פלטינום)',  r: totalFor('migdal', 'plat')},
+      {key:'harel',  name:'הראל',            r: totalFor('harel',  null)}
     ];
     var minTotal = Infinity;
     results.forEach(function(x){ if(!x.r.blocked && x.r.total>0 && x.r.total<minTotal) minTotal=x.r.total; });
@@ -1278,8 +1280,10 @@ render();
     });
     html += '</tr></tbody></table>';
 
-    // הערות על הקטגוריות שסומנו
-    var activeNotes = CATS.filter(function(c){ return checked[c.key]; });
+    // הערות על הקטגוריות שסומנו אצל לפחות נוסע אחד
+    var anyChecked = {};
+    state.travelers.forEach(function(t){ CATS.forEach(function(c){ if(t.ext && t.ext[c.key]) anyChecked[c.key]=true; }); });
+    var activeNotes = CATS.filter(function(c){ return anyChecked[c.key]; });
     if(activeNotes.length){
       html += '<div class="cmp-notes"><div class="cmp-notes-title">שימו לב להבדלים בכיסויים שסימנתם:</div><ul>';
       activeNotes.forEach(function(c){ html += '<li><strong>'+c.label+':</strong> '+c.note+'</li>'; });
@@ -1289,19 +1293,6 @@ render();
     box.innerHTML = html;
   }
 
-  // בונה את תיבות הסימון של הקטגוריות
-  function buildCatChecks(){
-    var wrap = document.getElementById('cmp-cats');
-    if(!wrap) return;
-    var html = '<div class="cmp-cats-title">בחרו כיסויים להשוואה (הכיסוי הרפואי הבסיסי כלול תמיד):</div><div class="cmp-cats-grid">';
-    CATS.forEach(function(c){
-      html += '<label class="cmp-cat"><input type="checkbox" id="cmp-'+c.key+'"> <span>'+c.label+'</span></label>';
-    });
-    html += '</div>';
-    wrap.innerHTML = html;
-  }
-
-  buildCatChecks();
   var btn = document.getElementById('compare-btn');
   if(btn) btn.addEventListener('click', runCompare);
 })();
