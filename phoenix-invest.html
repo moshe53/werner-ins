@@ -543,8 +543,8 @@ body{font-size:16px}
 <div class="lead-form" id="lead">
  <h3>רוצים שאתאים לכם מסלול לפני שאתם פותחים?</h3>
  <p class="lf-sub">מלאו 3 שדות ואחזור אליכם עם המלצה. בלי עלות, בלי התחייבות.</p>
- <div class="lf-field"><label for="lf-name">שם מלא</label><input type="text" id="lf-name" placeholder="השם שלכם"></div>
- <div class="lf-field"><label for="lf-phone">טלפון</label><input type="tel" id="lf-phone" placeholder="05X-XXXXXXX"></div>
+ <div class="lf-field"><label for="lf-name">שם מלא <span style="color:#B3261E">*</span></label><input type="text" id="lf-name" required aria-required="true" placeholder="השם שלכם"></div>
+ <div class="lf-field"><label for="lf-phone">טלפון <span style="color:#B3261E">*</span></label><input type="tel" id="lf-phone" required aria-required="true" placeholder="05X-XXXXXXX"></div>
  <div class="lf-field"><label for="lf-amount">סכום משוער</label><select id="lf-amount">
   <option value="">בחרו סכום…</option>
   <option>עד 50,000 ₪</option>
@@ -561,6 +561,8 @@ body{font-size:16px}
   <option>לקראת פרישה</option>
   <option>אחר</option>
  </select></div>
+ <div class="lf-field" style="flex-direction:row;align-items:flex-start;gap:9px"><input type="checkbox" id="lf-consent" style="width:18px;height:18px;margin-top:3px;flex:none;accent-color:var(--gold)"><label for="lf-consent" style="font-size:13px;font-weight:400;line-height:1.5;color:var(--muted)">אני מסכים/ה לקבל ממשה ורנר עדכונים, מידע ותוכן שיווקי בתחומי ביטוח, פנסיה וחיסכון בוואטסאפ, ב-SMS ובדוא"ל. ניתן להסיר את ההסכמה בכל עת.</label></div>
+ <div style="font-size:12px;color:var(--muted);margin:2px 0 8px">* שדה חובה</div><div id="lf-error" role="alert" aria-live="polite" style="font-size:13px;color:#B3261E;min-height:1px"></div>
  <button id="lead-form-submit" class="btn btn-gold" onclick="submitLead()">שלחו לי המלצה</button>
  <div class="lf-note">הפרטים נשלחים ישירות אליי בוואטסאפ. לא מועברים לצד שלישי.</div>
 </div>
@@ -718,9 +720,9 @@ function waClick(ctaId){ trackConversion('whatsapp', ctaId, 400); return true; }
 function submitLead(){
   var gv=function(id){var e=document.getElementById(id);return e?e.value:'';};
   var nm=gv('lf-name').trim(), ph=gv('lf-phone').trim();
-  if(!nm||!ph){ alert('נא למלא שם וטלפון כדי שאוכל לחזור אליכם.'); return; }
+  var eE=document.getElementById('lf-error'); if(eE)eE.textContent=''; if(!nm||!ph){ if(eE)eE.textContent='נא למלא שם וטלפון כדי שאוכל לחזור אליכם.'; else alert('נא למלא שם וטלפון'); return; }
   var il=/^0(5\d|[2-489])-?\d{7}$/;
-  if(!il.test(ph.replace(/[-\s]/g,''))){ alert('נא להזין מספר טלפון ישראלי תקין.'); return; }
+  if(!il.test(ph.replace(/[-\s]/g,''))){ if(eE)eE.textContent='נא להזין מספר טלפון ישראלי תקין.'; else alert('מספר טלפון לא תקין'); return; }
   var amount=gv('lf-amount'), goal=gv('lf-goal');
   var txt='שלום משה, הגעתי מדף הפניקס אינווסט.\nשם: '+nm+'\nטלפון: '+ph;
   if(amount) txt+='\nסכום משוער: '+amount;

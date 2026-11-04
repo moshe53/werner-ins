@@ -1,4 +1,16 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/finance",
+      "destination": "/articles",
+      "permanent": true
+    },
+    {
+      "source": "/finance.html",
+      "destination": "/articles",
+      "permanent": true
+    }
+  ]
 }
