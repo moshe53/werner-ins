@@ -725,6 +725,7 @@ function submitLead(){
   var txt='שלום משה, הגעתי מדף הפניקס אינווסט.\nשם: '+nm+'\nטלפון: '+ph;
   if(amount) txt+='\nסכום משוער: '+amount;
   if(goal) txt+='\nמטרה: '+goal;
+  var cons=document.getElementById('lf-consent'); txt+='\nהסכמה לדיוור: '+((cons&&cons.checked)?'כן':'לא');
   trackConversion('form','lead-form-submit',400);
   window.open('https://wa.me/972524808787?text='+encodeURIComponent(txt),'_blank','noopener');
 }

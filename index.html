@@ -448,8 +448,9 @@ body{font-size:16px}
     <div class="field"><label for="f-phone">טלפון</label><input id="f-phone" type="tel" placeholder="05X-XXXXXXX"></div>
     <div class="field"><label for="f-subject">במה לעזור?</label><select id="f-subject"><option>ביטוח בריאות</option><option>ביטוח חיים</option><option>פנסיה ופרישה</option><option>חיסכון והשקעות</option><option>ביטוח נסיעות לחו״ל</option><option>אחר</option></select></div>
     <div class="field"><label for="f-msg">הודעה (אופציונלי)</label><textarea id="f-msg" placeholder="ספרו לי בקצרה..."></textarea></div>
+    <div class="field" style="flex-direction:row;align-items:flex-start;gap:9px"><input type="checkbox" id="f-consent" style="width:18px;height:18px;margin-top:3px;flex:none;accent-color:var(--gold)"><label for="f-consent" style="font-size:13px;font-weight:400;line-height:1.5;color:var(--muted)">אני מסכים/ה לקבל ממשה ורנר עדכונים, מידע ותוכן שיווקי בתחומי ביטוח, פנסיה וחיסכון בוואטסאפ, ב-SMS ובדוא"ל. ניתן להסיר את ההסכמה בכל עת.</label></div>
     <button class="btn btn-gold" onclick="sendLead()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg> שלחו דרך וואטסאפ</button>
-    <div class="form-note">הפרטים נשלחים ישירות אליי בוואטסאפ ולא נשמרים באתר.</div>
+    <div class="form-note">הפרטים נשלחים אליי בוואטסאפ. פרטי הפנייה מטופלים בהתאם ל<a href="/privacy" style="color:var(--gold);text-decoration:underline">מדיניות הפרטיות</a>.</div>
    </div>
   </div>
  </div>
@@ -518,6 +519,8 @@ body{font-size:16px}
    var txt='שלום משה, הגעתי מהאתר.\nשם: '+nm+'\nטלפון: '+ph;
    if(sub)txt+='\nנושא: '+sub;
    if(msg.trim())txt+='\nהודעה: '+msg;
+   var consent=document.getElementById('f-consent');
+   txt+='\nהסכמה לדיוור: '+((consent&&consent.checked)?'כן':'לא');
    window.open('https://wa.me/972524808787?text='+encodeURIComponent(txt),'_blank');setTimeout(function(){window.location.href='/thank-you';},600);
  };
  (function(){var root=document.documentElement,bd=document.body;
