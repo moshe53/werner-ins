@@ -3,7 +3,7 @@
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18324415786"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18324415786');</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('wi_consent')}catch(e){}var g=c==='denied'?'denied':'granted';gtag('consent','default',{ad_storage:g,analytics_storage:g,ad_user_data:g,ad_personalization:g});})();gtag('js',new Date());gtag('config','AW-18324415786');gtag('config','G-SN9HP72FKM');</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -584,5 +584,36 @@ function pregBuy(url, co){
   window.open(url,'_blank','noopener');
   return false;
 }
+</script>
+<div id="ckBar" role="region" aria-label="הודעת עוגיות" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:#fff;border-top:2px solid var(--gold,#12876F);box-shadow:0 -6px 22px rgba(0,0,0,.12);padding:14px 18px;font-family:inherit">
+ <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between">
+  <p style="margin:0;font-size:14px;line-height:1.55;color:#2E4139;flex:1 1 420px">האתר משתמש בעוגיות ובכלי מדידה של גוגל כדי להבין איך משתמשים בו ולשפר אותו. אפשר לסרב, והאתר ימשיך לעבוד כרגיל. <a href="/privacy" style="color:var(--gold,#12876F);font-weight:700">מדיניות פרטיות</a></p>
+  <div style="display:flex;gap:10px;flex:none">
+   <button type="button" id="ckYes" style="background:var(--gold,#12876F);color:#fff;border:none;border-radius:3px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">אישור</button>
+   <button type="button" id="ckNo" style="background:transparent;color:#2E4139;border:1.5px solid #9DB8AF;border-radius:3px;padding:10px 18px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">דחייה</button>
+  </div>
+ </div>
+</div>
+<script>
+(function(){
+ function get(){try{return localStorage.getItem('wi_consent')}catch(e){return null}}
+ function set(v){try{localStorage.setItem('wi_consent',v)}catch(e){}}
+ var bar=document.getElementById('ckBar');
+ if(bar&&!get()){bar.style.display='block';}
+ function done(v){set(v);if(bar)bar.style.display='none';
+  if(v==='denied'){try{gtag('consent','update',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'})}catch(e){}}}
+ var y=document.getElementById('ckYes'),n=document.getElementById('ckNo');
+ if(y)y.addEventListener('click',function(){done('granted')});
+ if(n)n.addEventListener('click',function(){done('denied')});
+ document.addEventListener('click',function(ev){
+  var a=ev.target.closest&&ev.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';var e=null,p={};
+  if(h.indexOf('buy.passportcard.co.il')>-1){e='purchase_click';p.company='passportcard'}
+  else if(h.indexOf('digital.harel-group.co.il')>-1){e='purchase_click';p.company='harel'}
+  else if(h.indexOf('wa.me/')>-1){e='whatsapp_click'}
+  else if(h.indexOf('tel:')===0){e='phone_click'}
+  else if(h.indexOf('mailto:')===0){e='email_click'}
+  if(e){p.page_path=location.pathname;p.transport_type='beacon';try{gtag('event',e,p)}catch(err){}}
+ },true);
+})();
 </script>
 </body></html>
